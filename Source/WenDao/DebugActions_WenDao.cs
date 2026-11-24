@@ -25,7 +25,7 @@ namespace WenDao
                 p, RimWorld.MessageTypeDefOf.NeutralEvent, false);
         }
 
-        [DebugAction("WenDao", "Log spirit root distribution (10000 rolls)", allowedGameStates = AllowedGameStates.Entry | AllowedGameStates.Playing)]
+        [DebugAction("WenDao", "Log spirit root distribution (10000 rolls)", allowedGameStates = AllowedGameStates.Playing)]
         private static void LogDistribution()
         {
             const int n = 10000;
