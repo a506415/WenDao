@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>邊緣問道 WenDao</name>
+  <author>a506415</author>
+  <packageId>a506415.wendao</packageId>
+  <url>https://github.com/a506415/WenDao</url>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>Ludeon.RimWorld</li>
+  </loadAfter>
+  <description>不依賴任何 DLC 的修仙 mod：靈根、境界、突破、天劫，壽元即資源。
+
+A xianxia cultivation mod with no DLC requirements. Work in progress.</description>
+</ModMetaData>
