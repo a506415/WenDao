@@ -108,7 +108,14 @@
     <everCurableByItem>false</everCurableByItem>
     <scenarioCanAdd>false</scenarioCanAdd>
     <initialSeverity>1</initialSeverity>
-    <causesNeed>WD_Zhenyuan</causesNeed>
+    <stages>
+      <li>
+        <!-- 有修為才有真元 -->
+        <enablesNeeds>
+          <li>WD_Zhenyuan</li>
+        </enablesNeeds>
+      </li>
+    </stages>
   </HediffDef>
 
   <!-- ===== 真元 ===== -->

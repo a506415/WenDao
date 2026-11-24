@@ -30,7 +30,8 @@ namespace WenDao
     {
         public int order;
         public float zhenyuanMax = 10f;
-        [MustTranslate]
+        // 整份清單翻譯（<li> 形式）需要 TranslationCanChangeCount 才會被套用。
+        [MustTranslate, TranslationCanChangeCount]
         public List<string> stageLabels = new List<string>();
         public List<float> stageCosts = new List<float>();
 

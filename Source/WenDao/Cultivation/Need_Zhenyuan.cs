@@ -5,7 +5,7 @@ namespace WenDao
 {
     /// <summary>
     /// 真元：法術與護體罡氣的能量池。上限隨境界，從環境靈氣自然回復，打坐時更快。
-    /// 由 WD_Cultivation hediff 的 causesNeed 帶出，只有修士才有。
+    /// 由 WD_Cultivation hediff 階段的 enablesNeeds 帶出，只有修士才有。
     /// </summary>
     public class Need_Zhenyuan : Need
     {
