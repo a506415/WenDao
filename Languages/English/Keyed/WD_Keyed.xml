@@ -10,4 +10,20 @@
   <WD_AlreadyTested>already tested</WD_AlreadyTested>
   <WD_SpiritRootRevealed>{0} has a {1} ({2}).</WD_SpiritRootRevealed>
   <WD_SpiritRootRevealedMortal>The plate stays dark under {0}'s hand: no spirit root, just a mortal.</WD_SpiritRootRevealedMortal>
+
+  <!-- Spirit qi -->
+  <WD_ToggleQiOverlay>Toggle spirit qi overlay</WD_ToggleQiOverlay>
+  <WD_QiAtCell>Spirit qi {0} (base {1})</WD_QiAtCell>
+  <WD_SpotInspect>Spirit qi here: {0}   Meditation efficiency: {1}</WD_SpotInspect>
+
+  <!-- Cultivation -->
+  <WD_Bottleneck>bottleneck</WD_Bottleneck>
+  <WD_BottleneckDesc>This realm is complete. No further progress is possible without a breakthrough to the next realm.</WD_BottleneckDesc>
+  <WD_CultivationProgress>Stage progress: {0} / {1}</WD_CultivationProgress>
+  <WD_ZhenyuanCapacity>True essence capacity: {0}</WD_ZhenyuanCapacity>
+  <WD_StageAdvanced>{0} advanced to {1} ({2}).</WD_StageAdvanced>
+  <WD_ReachedBottleneck>{0} has reached the {1} bottleneck and needs a breakthrough to go further.</WD_ReachedBottleneck>
+  <WD_GainPerHour>(+{0} progress/hour)</WD_GainPerHour>
+  <WD_StatPartSpiritRoot>{0}: {1}</WD_StatPartSpiritRoot>
+  <WD_StatPartMindState>Mind state: {0}</WD_StatPartMindState>
 </LanguageData>

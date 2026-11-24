@@ -10,4 +10,20 @@
   <WD_AlreadyTested>已測過</WD_AlreadyTested>
   <WD_SpiritRootRevealed>{0} 測出{1}（{2}）。</WD_SpiritRootRevealed>
   <WD_SpiritRootRevealedMortal>{0} 觸碰測靈盤，毫無反應——沒有靈根，只是凡人。</WD_SpiritRootRevealedMortal>
+
+  <!-- 天地靈氣 -->
+  <WD_ToggleQiOverlay>切換天地靈氣顯示</WD_ToggleQiOverlay>
+  <WD_QiAtCell>靈氣 {0}（基準 {1}）</WD_QiAtCell>
+  <WD_SpotInspect>此處靈氣：{0}　打坐效率：{1}</WD_SpotInspect>
+
+  <!-- 修為 -->
+  <WD_Bottleneck>瓶頸</WD_Bottleneck>
+  <WD_BottleneckDesc>已至此境界盡頭，修為無法再增，需突破至下一境界。</WD_BottleneckDesc>
+  <WD_CultivationProgress>本階修為：{0} / {1}</WD_CultivationProgress>
+  <WD_ZhenyuanCapacity>真元上限：{0}</WD_ZhenyuanCapacity>
+  <WD_StageAdvanced>{0} 修為精進：{1}{2}。</WD_StageAdvanced>
+  <WD_ReachedBottleneck>{0} 已至{1}瓶頸，需突破方能再進。</WD_ReachedBottleneck>
+  <WD_GainPerHour>（修為每小時 +{0}）</WD_GainPerHour>
+  <WD_StatPartSpiritRoot>{0}：{1}</WD_StatPartSpiritRoot>
+  <WD_StatPartMindState>心境：{0}</WD_StatPartMindState>
 </LanguageData>

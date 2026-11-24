@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===== 數值總表（集中調整）===== -->
+  <WenDao.WenDaoTuningDef>
+    <defName>WD_Tuning</defName>
+
+    <!-- 修為增量/小時 = baseGainPerHour × 修煉速度(靈根×心境…) × 該格靈氣 × 打坐處效率 -->
+    <baseGainPerHour>1.0</baseGainPerHour>
+    <groundEfficiency>0.6</groundEfficiency>
+    <sessionTicks>5000</sessionTicks>
+
+    <!-- 天地靈氣 -->
+    <mapBaseQi>0.7~1.3</mapBaseQi>
+    <qiNoiseAmplitude>0.35</qiNoiseAmplitude>
+    <qiNoiseFrequency>0.04</qiNoiseFrequency>
+    <minQi>0.05</minQi>
+    <!-- 每名打坐者每小時抽走半徑內每格的靈氣；回復為每小時補回(基準-現值)的比例。
+         平衡時：濃度 ≈ 基準 − 人數 × drain / regen -->
+    <qiDrainPerHour>0.01</qiDrainPerHour>
+    <qiDrainRadius>2.9</qiDrainRadius>
+    <qiRegenFractionPerHour>0.1</qiRegenFractionPerHour>
+
+    <!-- 真元：每天自然回復上限的比例 × 該格靈氣；打坐時乘以倍率 -->
+    <zhenyuanRegenPerDay>1.0</zhenyuanRegenPerDay>
+    <zhenyuanCultivatingFactor>3</zhenyuanCultivatingFactor>
+  </WenDao.WenDaoTuningDef>
+
+  <!-- ===== 境界 =====
+       stageCosts：每個小階需要的修為。頭級資質（約 ×2）每天打坐 8 小時約 +16。
+       練氣 360 ≈ 3 週；築基 850 ≈ 1 年；金丹 2300 ≈ 2.4 年。 -->
+
+  <WenDao.CultivationRealmDef>
+    <defName>WD_QiRefining</defName>
+    <label>Qi Refining</label>
+    <order>1</order>
+    <zhenyuanMax>20</zhenyuanMax>
+    <stageLabels>
+      <li>layer 1</li>
+      <li>layer 2</li>
+      <li>layer 3</li>
+      <li>layer 4</li>
+      <li>layer 5</li>
+      <li>layer 6</li>
+      <li>layer 7</li>
+      <li>layer 8</li>
+      <li>layer 9</li>
+    </stageLabels>
+    <stageCosts>
+      <li>20</li>
+      <li>25</li>
+      <li>30</li>
+      <li>35</li>
+      <li>40</li>
+      <li>45</li>
+      <li>50</li>
+      <li>55</li>
+      <li>60</li>
+    </stageCosts>
+  </WenDao.CultivationRealmDef>
+
+  <WenDao.CultivationRealmDef>
+    <defName>WD_FoundationEstablishment</defName>
+    <label>Foundation Establishment</label>
+    <order>2</order>
+    <zhenyuanMax>60</zhenyuanMax>
+    <stageLabels>
+      <li>early</li>
+      <li>middle</li>
+      <li>late</li>
+      <li>perfected</li>
+    </stageLabels>
+    <stageCosts>
+      <li>180</li>
+      <li>200</li>
+      <li>220</li>
+      <li>250</li>
+    </stageCosts>
+  </WenDao.CultivationRealmDef>
+
+  <WenDao.CultivationRealmDef>
+    <defName>WD_GoldenCore</defName>
+    <label>Golden Core</label>
+    <order>3</order>
+    <zhenyuanMax>150</zhenyuanMax>
+    <stageLabels>
+      <li>early</li>
+      <li>middle</li>
+      <li>late</li>
+      <li>perfected</li>
+    </stageLabels>
+    <stageCosts>
+      <li>500</li>
+      <li>550</li>
+      <li>600</li>
+      <li>650</li>
+    </stageCosts>
+  </WenDao.CultivationRealmDef>
+
+  <!-- ===== 修為 Hediff ===== -->
+  <HediffDef>
+    <defName>WD_Cultivation</defName>
+    <hediffClass>WenDao.Hediff_Cultivation</hediffClass>
+    <label>cultivation</label>
+    <description>This person's cultivation realm and progress.</description>
+    <defaultLabelColor>(0.95, 0.85, 0.45)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+    <causesNeed>WD_Zhenyuan</causesNeed>
+  </HediffDef>
+
+  <!-- ===== 真元 ===== -->
+  <NeedDef>
+    <defName>WD_Zhenyuan</defName>
+    <needClass>WenDao.Need_Zhenyuan</needClass>
+    <label>true essence</label>
+    <description>The cultivator's reservoir of refined spiritual energy, spent on spells and protective qi. It recovers on its own from the surrounding spirit qi, much faster while cultivating. Its capacity grows with the cultivation realm.</description>
+    <minIntelligence>Humanlike</minIntelligence>
+    <onlyIfCausedByHediff>true</onlyIfCausedByHediff>
+    <listPriority>700</listPriority>
+    <showForCaravanMembers>true</showForCaravanMembers>
+  </NeedDef>
+
+  <!-- ===== 修煉速度 Stat：丹藥、功法日後以 statFactors 疊上 ===== -->
+  <StatDef>
+    <defName>WD_CultivationSpeed</defName>
+    <label>cultivation speed</label>
+    <description>How fast this person gains cultivation progress, before the local spirit qi and the meditation spot are applied.</description>
+    <category>BasicsPawn</category>
+    <workerClass>WenDao.StatWorker_CultivationSpeed</workerClass>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <displayPriorityInCategory>3000</displayPriorityInCategory>
+    <parts>
+      <li Class="WenDao.StatPart_SpiritRoot" />
+      <li Class="WenDao.StatPart_MindState">
+        <!-- 心境係數：心情 0 → ×0.6，0.5 → ×1.0，1 → ×1.2 -->
+        <curve>
+          <points>
+            <li>(0, 0.6)</li>
+            <li>(0.5, 1.0)</li>
+            <li>(1, 1.2)</li>
+          </points>
+        </curve>
+      </li>
+    </parts>
+  </StatDef>
+
+</Defs>

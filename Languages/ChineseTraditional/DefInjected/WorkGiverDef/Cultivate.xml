@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_CultivateOnCushion.label>在蒲團上修煉</WD_CultivateOnCushion.label>
+  <WD_CultivateOnCushion.verb>在此修煉</WD_CultivateOnCushion.verb>
+  <WD_CultivateOnCushion.gerund>正在此修煉</WD_CultivateOnCushion.gerund>
+
+  <WD_CultivateOnGround.label>席地修煉</WD_CultivateOnGround.label>
+  <WD_CultivateOnGround.verb>修煉</WD_CultivateOnGround.verb>
+  <WD_CultivateOnGround.gerund>正在修煉</WD_CultivateOnGround.gerund>
+</LanguageData>

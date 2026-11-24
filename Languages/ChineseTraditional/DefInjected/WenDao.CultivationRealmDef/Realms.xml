@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_QiRefining.label>練氣</WD_QiRefining.label>
+  <WD_QiRefining.stageLabels>
+    <li>一層</li>
+    <li>二層</li>
+    <li>三層</li>
+    <li>四層</li>
+    <li>五層</li>
+    <li>六層</li>
+    <li>七層</li>
+    <li>八層</li>
+    <li>九層</li>
+  </WD_QiRefining.stageLabels>
+
+  <WD_FoundationEstablishment.label>築基</WD_FoundationEstablishment.label>
+  <WD_FoundationEstablishment.stageLabels>
+    <li>初期</li>
+    <li>中期</li>
+    <li>後期</li>
+    <li>大圓滿</li>
+  </WD_FoundationEstablishment.stageLabels>
+
+  <WD_GoldenCore.label>金丹</WD_GoldenCore.label>
+  <WD_GoldenCore.stageLabels>
+    <li>初期</li>
+    <li>中期</li>
+    <li>後期</li>
+    <li>大圓滿</li>
+  </WD_GoldenCore.stageLabels>
+</LanguageData>

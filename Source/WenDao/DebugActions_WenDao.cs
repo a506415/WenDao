@@ -25,6 +25,31 @@ namespace WenDao
                 p, RimWorld.MessageTypeDefOf.NeutralEvent, false);
         }
 
+        [DebugAction("WenDao", "Cultivation +100", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void AddCultivation(Pawn p)
+        {
+            CultivationUtility.GetOrStartCultivation(p)?.AddProgress(100f);
+        }
+
+        [DebugAction("WenDao", "Advance realm (skip breakthrough)", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void AdvanceRealm(Pawn p)
+        {
+            Hediff_Cultivation c = CultivationUtility.GetOrStartCultivation(p);
+            if (c != null && c.AdvanceRealm())
+                p.health.Notify_HediffChanged(c);
+        }
+
+        [DebugAction("WenDao", "Fill true essence", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void FillZhenyuan(Pawn p)
+        {
+            RimWorld.Need n = p.needs?.TryGetNeed(WD_DefOf.WD_Zhenyuan);
+            if (n != null)
+                n.CurLevel = n.MaxLevel;
+        }
+
         [DebugAction("WenDao", "Log spirit root distribution (10000 rolls)", allowedGameStates = AllowedGameStates.Playing)]
         private static void LogDistribution()
         {

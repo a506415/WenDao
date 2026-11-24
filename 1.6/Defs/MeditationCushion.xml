@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>WD_MeditationCushion</defName>
+    <label>meditation cushion</label>
+    <description>A woven cushion for sitting in meditation. Cultivating here is far more effective than on bare ground. How much the cultivator gains also depends on the spirit qi where the cushion sits.</description>
+    <graphicData>
+      <!-- 佔位貼圖：原版動物睡點，依材料上色 -->
+      <texPath>Things/Building/Misc/AnimalBed/AnimalSleepSpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>0.8</uiIconScale>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>400</WorkToBuild>
+      <Mass>2</Mass>
+      <Flammability>1</Flammability>
+    </statBases>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costStuffCount>20</costStuffCount>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+    </building>
+    <comps>
+      <li Class="WenDao.CompProperties_CultivationSpot">
+        <efficiency>1.0</efficiency>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>WenDao.PlaceWorker_ShowSpiritQi</li>
+    </placeWorkers>
+    <designationCategory>WD_Cultivation</designationCategory>
+  </ThingDef>
+
+  <WorkTypeDef>
+    <defName>WD_Cultivate</defName>
+    <labelShort>cultivate</labelShort>
+    <pawnLabel>cultivator</pawnLabel>
+    <gerundLabel>cultivating</gerundLabel>
+    <description>Sit in meditation to gain cultivation progress. Only people with a spirit root can cultivate.</description>
+    <verb>Cultivate</verb>
+    <naturalPriority>90</naturalPriority>
+    <!-- 不設 workTags：「無法從事智力工作」的人也該能修煉（體修）。 -->
+  </WorkTypeDef>
+
+  <WorkGiverDef>
+    <defName>WD_CultivateOnCushion</defName>
+    <label>cultivate on a cushion</label>
+    <giverClass>WenDao.WorkGiver_CultivateOnCushion</giverClass>
+    <workType>WD_Cultivate</workType>
+    <verb>cultivate on</verb>
+    <gerund>cultivating on</gerund>
+    <priorityInType>100</priorityInType>
+    <canBeDoneByMechs>false</canBeDoneByMechs>
+  </WorkGiverDef>
+
+  <WorkGiverDef>
+    <defName>WD_CultivateOnGround</defName>
+    <label>cultivate on the ground</label>
+    <giverClass>WenDao.WorkGiver_CultivateOnGround</giverClass>
+    <workType>WD_Cultivate</workType>
+    <verb>cultivate</verb>
+    <gerund>cultivating</gerund>
+    <priorityInType>50</priorityInType>
+    <canBeDoneByMechs>false</canBeDoneByMechs>
+  </WorkGiverDef>
+
+  <JobDef>
+    <defName>WD_Cultivate</defName>
+    <driverClass>WenDao.JobDriver_Cultivate</driverClass>
+    <reportString>cultivating.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+  </JobDef>
+
+</Defs>

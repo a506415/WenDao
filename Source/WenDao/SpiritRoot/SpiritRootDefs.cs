@@ -37,6 +37,13 @@ namespace WenDao
         public static HediffDef WD_SpiritRoot;
         public static JobDef WD_TestSpiritRoot;
 
+        public static WenDaoTuningDef WD_Tuning;
+        public static HediffDef WD_Cultivation;
+        public static NeedDef WD_Zhenyuan;
+        public static StatDef WD_CultivationSpeed;
+        public static JobDef WD_Cultivate;
+        public static ThingDef WD_MeditationCushion;
+
         static WD_DefOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(WD_DefOf));
