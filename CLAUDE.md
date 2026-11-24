@@ -50,6 +50,7 @@ docs/DESIGN.md
 
 - 建置：`dotnet build Source/WenDao/WenDao.csproj -c Release`，輸出到 `1.6/Assemblies/`。每次改 C# 都要先確認建置零錯誤再交給使用者測。
 - 測試：使用者進遊戲測試並回報；之後讀 `Player.log` 搜尋 `WenDao`、`WD_`、`Exception`、`Could not`、`XML error`。Def 錯誤與缺翻譯都算 bug。
+- 原版繁中翻譯本身就有約 276 個 translation errors（只開 Core 也一樣），不是本 mod 造成；判斷是否為我們的問題要看錯誤內容是否涉及 `WD_` 或本 mod 的檔案。
 - 遊戲執行中 DLL 被鎖住，建置失敗時先請使用者關遊戲。
 - git：每個可運作的步驟一個 commit，訊息用英文祈使句。`push` 前先確認建置通過。不要 commit `bin/`、`obj/`、`1.6/Assemblies/`。
 - 數值（突破成功率、天劫強度等）集中放在 Def 或 `ModSettings`，方便 Phase 1 實測後調整。
@@ -57,4 +58,5 @@ docs/DESIGN.md
 ## 進度
 
 - [x] repo 建立、設計文件匯入、本機 junction（2026-11-24）
-- [ ] Phase 0 骨架：檔案與建置完成，待遊戲內驗證（載入、無紅字、log 出現繁中載入訊息）
+- [x] Phase 0 骨架：遊戲內驗證通過，log 出現繁中載入訊息、無紅字（2026-11-24）
+- [ ] Phase 1 MVP
