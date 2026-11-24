@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===== 屬性 / Elements ===== -->
+
+  <WenDao.SpiritElementDef>
+    <defName>WD_Metal</defName>
+    <label>metal</label>
+    <order>1</order>
+  </WenDao.SpiritElementDef>
+  <WenDao.SpiritElementDef>
+    <defName>WD_Wood</defName>
+    <label>wood</label>
+    <order>2</order>
+  </WenDao.SpiritElementDef>
+  <WenDao.SpiritElementDef>
+    <defName>WD_Water</defName>
+    <label>water</label>
+    <order>3</order>
+  </WenDao.SpiritElementDef>
+  <WenDao.SpiritElementDef>
+    <defName>WD_Fire</defName>
+    <label>fire</label>
+    <order>4</order>
+  </WenDao.SpiritElementDef>
+  <WenDao.SpiritElementDef>
+    <defName>WD_Earth</defName>
+    <label>earth</label>
+    <order>5</order>
+  </WenDao.SpiritElementDef>
+  <WenDao.SpiritElementDef>
+    <defName>WD_Wind</defName>
+    <label>wind</label>
+    <order>6</order>
+    <mutant>true</mutant>
+  </WenDao.SpiritElementDef>
+  <WenDao.SpiritElementDef>
+    <defName>WD_Thunder</defName>
+    <label>thunder</label>
+    <order>7</order>
+    <mutant>true</mutant>
+  </WenDao.SpiritElementDef>
+  <WenDao.SpiritElementDef>
+    <defName>WD_Ice</defName>
+    <label>ice</label>
+    <order>8</order>
+    <mutant>true</mutant>
+  </WenDao.SpiritElementDef>
+
+  <!-- ===== 品階 / Grades =====
+       commonality 為相對權重，合計 100 即百分比。
+       設計：無 10%、偽（五/四）60%、真（三/雙）25%、天/異 5%。 -->
+
+  <WenDao.SpiritRootGradeDef>
+    <defName>WD_NoRoot</defName>
+    <label>no spirit root</label>
+    <description>An ordinary mortal. Cannot cultivate.</description>
+    <order>0</order>
+    <commonality>10</commonality>
+    <elementCount>0</elementCount>
+    <canCultivate>false</canCultivate>
+  </WenDao.SpiritRootGradeDef>
+
+  <WenDao.SpiritRootGradeDef>
+    <defName>WD_FiveRoot</defName>
+    <label>five-element root</label>
+    <description>A pseudo root: all five elements, none of them pure. Cultivation is slow; usually stalls at Foundation Establishment without elixirs.</description>
+    <order>1</order>
+    <commonality>30</commonality>
+    <elementCount>5</elementCount>
+    <cultivationSpeed>0.4~0.45</cultivationSpeed>
+  </WenDao.SpiritRootGradeDef>
+
+  <WenDao.SpiritRootGradeDef>
+    <defName>WD_FourRoot</defName>
+    <label>four-element root</label>
+    <description>A pseudo root of four mixed elements. Cultivation is slow; usually stalls at Foundation Establishment without elixirs.</description>
+    <order>2</order>
+    <commonality>30</commonality>
+    <elementCount>4</elementCount>
+    <cultivationSpeed>0.5~0.6</cultivationSpeed>
+  </WenDao.SpiritRootGradeDef>
+
+  <WenDao.SpiritRootGradeDef>
+    <defName>WD_ThreeRoot</defName>
+    <label>three-element root</label>
+    <description>A true spirit root of three elements. Can reach Golden Core and beyond.</description>
+    <order>3</order>
+    <commonality>12.5</commonality>
+    <elementCount>3</elementCount>
+    <cultivationSpeed>0.8~0.95</cultivationSpeed>
+  </WenDao.SpiritRootGradeDef>
+
+  <WenDao.SpiritRootGradeDef>
+    <defName>WD_DualRoot</defName>
+    <label>dual-element root</label>
+    <description>A true spirit root of two elements. Can reach Golden Core and beyond.</description>
+    <order>4</order>
+    <commonality>12.5</commonality>
+    <elementCount>2</elementCount>
+    <cultivationSpeed>1.0~1.2</cultivationSpeed>
+  </WenDao.SpiritRootGradeDef>
+
+  <WenDao.SpiritRootGradeDef>
+    <defName>WD_HeavenlyRoot</defName>
+    <label>heavenly root</label>
+    <description>A single pure element. One in a few dozen; has a real chance of ascension.</description>
+    <order>5</order>
+    <commonality>3</commonality>
+    <elementCount>1</elementCount>
+    <cultivationSpeed>1.6~2.0</cultivationSpeed>
+  </WenDao.SpiritRootGradeDef>
+
+  <WenDao.SpiritRootGradeDef>
+    <defName>WD_MutantRoot</defName>
+    <label>mutant root</label>
+    <description>A single mutated element—wind, thunder or ice. Rare; has a real chance of ascension.</description>
+    <order>6</order>
+    <commonality>2</commonality>
+    <elementCount>1</elementCount>
+    <mutant>true</mutant>
+    <cultivationSpeed>1.6~2.0</cultivationSpeed>
+  </WenDao.SpiritRootGradeDef>
+
+  <!-- ===== Hediff ===== -->
+
+  <HediffDef>
+    <defName>WD_SpiritRoot</defName>
+    <hediffClass>WenDao.Hediff_SpiritRoot</hediffClass>
+    <label>spirit root</label>
+    <description>The innate spiritual root that decides whether, and how fast, this person can cultivate.</description>
+    <defaultLabelColor>(0.55, 0.85, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+  </HediffDef>
+
+</Defs>

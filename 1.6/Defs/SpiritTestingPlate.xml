@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <DesignationCategoryDef>
+    <defName>WD_Cultivation</defName>
+    <label>cultivation</label>
+    <description>Buildings for cultivators.</description>
+    <order>95</order>
+    <specialDesignatorClasses>
+      <li>Designator_Cancel</li>
+      <li>Designator_Deconstruct</li>
+    </specialDesignatorClasses>
+  </DesignationCategoryDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>WD_SpiritTestingPlate</defName>
+    <label>spirit-testing plate</label>
+    <description>A carved stone plate that glows when touched by someone with a spirit root. A colonist who lays a hand on it learns their spirit root grade and elements.</description>
+    <graphicData>
+      <!-- 佔位貼圖：原版古甕 -->
+      <texPath>Things/Building/Misc/Urn</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.70, 0.85, 1.0)</color>
+      <shadowData>
+        <volume>(0.4, 0.3, 0.3)</volume>
+      </shadowData>
+    </graphicData>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <rotatable>false</rotatable>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
+      <Mass>15</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <building>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+    </building>
+    <comps>
+      <li Class="WenDao.CompProperties_SpiritTester">
+        <testDurationTicks>300</testDurationTicks>
+      </li>
+    </comps>
+    <designationCategory>WD_Cultivation</designationCategory>
+  </ThingDef>
+
+  <JobDef>
+    <defName>WD_TestSpiritRoot</defName>
+    <driverClass>WenDao.JobDriver_TestSpiritRoot</driverClass>
+    <reportString>testing spirit root at TargetA.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+</Defs>

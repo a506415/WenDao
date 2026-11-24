@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <WD_ModLoaded>WenDao loaded (version {0}).</WD_ModLoaded>
+
+  <!-- Spirit roots -->
+  <WD_ElementSeparator>, </WD_ElementSeparator>
+  <WD_CultivationSpeed>Cultivation speed: {0}</WD_CultivationSpeed>
+  <WD_CannotCultivate>Cannot cultivate.</WD_CannotCultivate>
+  <WD_TestSpiritRoot>Test spirit root</WD_TestSpiritRoot>
+  <WD_AlreadyTested>already tested</WD_AlreadyTested>
+  <WD_SpiritRootRevealed>{0} has a {1} ({2}).</WD_SpiritRootRevealed>
+  <WD_SpiritRootRevealedMortal>The plate stays dark under {0}'s hand: no spirit root, just a mortal.</WD_SpiritRootRevealedMortal>
 </LanguageData>

@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <WD_ModLoaded>《邊緣問道》已載入（版本 {0}）。</WD_ModLoaded>
+
+  <!-- 靈根 -->
+  <WD_ElementSeparator>、</WD_ElementSeparator>
+  <WD_CultivationSpeed>修煉速度：{0}</WD_CultivationSpeed>
+  <WD_CannotCultivate>無法修煉。</WD_CannotCultivate>
+  <WD_TestSpiritRoot>測靈根</WD_TestSpiritRoot>
+  <WD_AlreadyTested>已測過</WD_AlreadyTested>
+  <WD_SpiritRootRevealed>{0} 測出{1}（{2}）。</WD_SpiritRootRevealed>
+  <WD_SpiritRootRevealedMortal>{0} 觸碰測靈盤，毫無反應——沒有靈根，只是凡人。</WD_SpiritRootRevealedMortal>
 </LanguageData>

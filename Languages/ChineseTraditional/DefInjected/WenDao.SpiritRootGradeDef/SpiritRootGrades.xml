@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_NoRoot.label>無靈根</WD_NoRoot.label>
+  <WD_NoRoot.description>凡人之軀，無法修煉。</WD_NoRoot.description>
+
+  <WD_FiveRoot.label>五靈根</WD_FiveRoot.label>
+  <WD_FiveRoot.description>偽靈根：五行俱全卻無一精純。修煉緩慢，若無丹藥多半止步築基。</WD_FiveRoot.description>
+
+  <WD_FourRoot.label>四靈根</WD_FourRoot.label>
+  <WD_FourRoot.description>偽靈根：四行駁雜。修煉緩慢，若無丹藥多半止步築基。</WD_FourRoot.description>
+
+  <WD_ThreeRoot.label>三靈根</WD_ThreeRoot.label>
+  <WD_ThreeRoot.description>真靈根：三行相合，可望金丹乃至元嬰。</WD_ThreeRoot.description>
+
+  <WD_DualRoot.label>雙靈根</WD_DualRoot.label>
+  <WD_DualRoot.description>真靈根：兩行相生，可望金丹乃至元嬰。</WD_DualRoot.description>
+
+  <WD_HeavenlyRoot.label>天靈根</WD_HeavenlyRoot.label>
+  <WD_HeavenlyRoot.description>單一屬性、精純無雜，數十人中難得一見，有機會飛升。</WD_HeavenlyRoot.description>
+
+  <WD_MutantRoot.label>異靈根</WD_MutantRoot.label>
+  <WD_MutantRoot.description>風、雷、冰之一的變異屬性，極為罕見，有機會飛升。</WD_MutantRoot.description>
+</LanguageData>
