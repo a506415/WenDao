@@ -18,7 +18,8 @@
 
   <!-- 修為 -->
   <WD_Bottleneck>瓶頸</WD_Bottleneck>
-  <WD_BottleneckDesc>已至此境界盡頭，修為無法再增，需突破至下一境界。</WD_BottleneckDesc>
+  <WD_BottleneckDesc>已至此境界盡頭，修為無法再增。繼續打坐可累積感悟；感悟圓滿後在蒲團上閉關突破，也可感悟未足就強行突破。</WD_BottleneckDesc>
+  <WD_BottleneckNoNextRealm>已至此境界盡頭。更高境界尚未開放。</WD_BottleneckNoNextRealm>
   <WD_CultivationProgress>本階修為：{0} / {1}</WD_CultivationProgress>
   <WD_ZhenyuanCapacity>真元上限：{0}</WD_ZhenyuanCapacity>
   <WD_StageAdvanced>{0} 修為精進：{1}{2}。</WD_StageAdvanced>
@@ -26,4 +27,34 @@
   <WD_GainPerHour>（修為每小時 +{0}）</WD_GainPerHour>
   <WD_StatPartSpiritRoot>{0}：{1}</WD_StatPartSpiritRoot>
   <WD_StatPartMindState>心境：{0}</WD_StatPartMindState>
+
+  <!-- 感悟、壽元 -->
+  <WD_Insight>感悟</WD_Insight>
+  <WD_InsightProgress>感悟：{0} / {1}</WD_InsightProgress>
+  <WD_InsightFull>{0} 感悟圓滿，可在蒲團上閉關衝擊{1}。</WD_InsightFull>
+  <WD_LifespanRemaining>剩餘壽元：{0} 年（境界上限 {1} 年，已折壽 {2} 年）</WD_LifespanRemaining>
+  <WD_LetterLifespanWarningLabel>{0} 壽元將盡</WD_LetterLifespanWarningLabel>
+  <WD_LetterLifespanWarning>{0} 只剩約 {1} 年壽元。若不突破至下一境界或服用延壽丹，便將坐化。</WD_LetterLifespanWarning>
+  <WD_LetterLifespanEndedLabel>{0} 坐化</WD_LetterLifespanEndedLabel>
+  <WD_LetterLifespanEnded>{0} 壽元已盡，困於{1}終究未能再進一步，就此坐化。</WD_LetterLifespanEnded>
+
+  <!-- 突破 -->
+  <WD_StartSeclusion>閉關突破（成功率 {0}，閉關 {1} 天）</WD_StartSeclusion>
+  <WD_StartForcedSeclusion>強行突破（感悟 {0}，成功率 {1}，閉關 {2} 天，成功亦折壽 {3} 年）</WD_StartForcedSeclusion>
+  <WD_GuardSeclusion>為 {0} 護法</WD_GuardSeclusion>
+  <WD_SeclusionReport>（目前成功率 {0}）</WD_SeclusionReport>
+  <WD_LetterBreakthroughSuccessLabel>{0} 突破成功</WD_LetterBreakthroughSuccessLabel>
+  <WD_LetterBreakthroughSuccess>{0} 衝破瓶頸，踏入{1}！</WD_LetterBreakthroughSuccess>
+  <WD_LetterForcedCost>強行突破傷及根本，折損 {0} 年壽元。</WD_LetterForcedCost>
+  <WD_LetterBreakthroughFailedLabel>{0} 突破失敗</WD_LetterBreakthroughFailedLabel>
+  <WD_LetterBreakthroughFailed>{0} 衝擊{1}瓶頸失敗（{2}），靈力反噬，感悟盡失：</WD_LetterBreakthroughFailed>
+  <WD_LetterLifespanLost>折壽 {0} 年</WD_LetterLifespanLost>
+  <WD_FailReasonRoll>成功率 {0}</WD_FailReasonRoll>
+  <WD_FailReasonInterrupted>閉關被打斷</WD_FailReasonInterrupted>
+  <WD_FailReasonFledTribulation>逃離天劫</WD_FailReasonFledTribulation>
+
+  <!-- 天劫 -->
+  <WD_LetterTribulationLabel>天劫降臨：{0}</WD_LetterTribulationLabel>
+  <WD_LetterTribulation>{0} 突破在即，引動天劫！約 {3} 小時後，{2} 道天雷將接連劈向{0}，撐過便踏入{1}。\n\n落雷會波及周圍數格並可能引火——其他人應盡快遠離。若{0}在天劫結束前離開此地，突破即告失敗。</WD_LetterTribulation>
+  <WD_TribulationProgress>已落雷：{0} / {1}</WD_TribulationProgress>
 </LanguageData>

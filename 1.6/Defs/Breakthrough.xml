@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 閉關中：飢餓與疲勞大幅放緩，讓長時間閉關不至於餓死 -->
+  <HediffDef>
+    <defName>WD_InSeclusion</defName>
+    <label>in seclusion</label>
+    <description>Sealed in meditation to break through to the next realm. Hunger and fatigue slow to a crawl. Any interruption causes a violent backlash.</description>
+    <defaultLabelColor>(0.6, 0.8, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages>
+      <li>
+        <hungerRateFactor>0.15</hungerRateFactor>
+        <restFallFactor>0.15</restFallFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- 反噬內傷：數日內逐漸痊癒 -->
+  <HediffDef>
+    <defName>WD_QiBacklash</defName>
+    <label>qi backlash</label>
+    <description>Internal injuries from spiritual energy turning on its host after a failed breakthrough. Heals over several days.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.9, 0.4, 0.4)</defaultLabelColor>
+    <isBad>true</isBad>
+    <initialSeverity>0.3</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <lethalSeverity>1</lethalSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.1</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>minor</label>
+        <painOffset>0.1</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.3</minSeverity>
+        <label>moderate</label>
+        <painOffset>0.2</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.1</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <label>severe</label>
+        <painOffset>0.35</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.25</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- 根基受損：永久降低修煉速度，重複失敗會加重 -->
+  <HediffDef>
+    <defName>WD_DamagedFoundation</defName>
+    <label>damaged foundation</label>
+    <description>A failed breakthrough cracked this cultivator's foundation. Cultivation is permanently slower, and repeated failures make it worse.</description>
+    <defaultLabelColor>(0.8, 0.5, 0.3)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+    <stages>
+      <li>
+        <statFactors>
+          <WD_CultivationSpeed>0.8</WD_CultivationSpeed>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>2</minSeverity>
+        <label>grave</label>
+        <statFactors>
+          <WD_CultivationSpeed>0.6</WD_CultivationSpeed>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>3</minSeverity>
+        <label>shattered</label>
+        <statFactors>
+          <WD_CultivationSpeed>0.4</WD_CultivationSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>WD_BreakthroughSucceeded</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>broke through to a new realm</label>
+        <description>The barrier gave way. I can feel heaven and earth more clearly than ever.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>WD_BreakthroughFailed</defName>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>failed breakthrough</label>
+        <description>I threw myself at the barrier and it threw me back. Years of my life, gone.</description>
+        <baseMoodEffect>-12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <JobDef>
+    <defName>WD_Seclusion</defName>
+    <driverClass>WenDao.JobDriver_Seclusion</driverClass>
+    <reportString>in seclusion, breaking through.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <suspendable>false</suspendable>
+  </JobDef>
+
+  <JobDef>
+    <defName>WD_GuardSeclusion</defName>
+    <driverClass>WenDao.JobDriver_GuardSeclusion</driverClass>
+    <reportString>guarding TargetA in seclusion.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+  </JobDef>
+
+  <GameConditionDef>
+    <defName>WD_HeavenlyTribulation</defName>
+    <conditionClass>WenDao.GameCondition_HeavenlyTribulation</conditionClass>
+    <label>heavenly tribulation</label>
+    <description>Heaven is testing a cultivator who dared to break through. Lightning will strike them again and again, and anyone standing nearby will be caught in it.</description>
+    <endMessage>The tribulation clouds disperse.</endMessage>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+
+</Defs>

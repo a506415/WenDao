@@ -22,7 +22,24 @@ namespace WenDao
         public float zhenyuanRegenPerDay = 1f;
         public float zhenyuanCultivatingFactor = 3f;
 
+        public float forcedChanceMin = 0.3f;
+        public float forcedLifespanCapFraction = 0.1f;
+        public float guardBonus = 0.15f;
+        public float guardRadius = 3.9f;
+        public FloatRange breakthroughChanceRange = new FloatRange(0.02f, 0.95f);
+
+        public int tribulationWarningTicks = 2500;
+        public int tribulationIntervalTicks = 600;
+
+        public float lifespanWarningYears = 5f;
+
         public static WenDaoTuningDef Get => WD_DefOf.WD_Tuning;
+    }
+
+    public class HediffSeverity
+    {
+        public HediffDef hediff;
+        public float severity = 1f;
     }
 
     /// <summary>大境界。小階之間自動推進；大境界之間需要突破。</summary>
@@ -34,6 +51,24 @@ namespace WenDao
         [MustTranslate, TranslationCanChangeCount]
         public List<string> stageLabels = new List<string>();
         public List<float> stageCosts = new List<float>();
+
+        /// <summary>此境界的壽元上限（年）。</summary>
+        public float lifespanYears = 100f;
+
+        // ---- 突破出此境界 ----
+        public float insightRequired = 50f;
+        public float seclusionDays = 1f;
+        public float breakthroughChance = 0.5f;
+        public FloatRange failureLifespanLoss = FloatRange.Zero;
+        public List<HediffSeverity> failureHediffs = new List<HediffSeverity>();
+
+        // ---- 突破進此境界 ----
+        public int tribulationStrikes;
+        public FloatRange tribulationDamage = FloatRange.Zero;
+
+        public bool HasTribulation => tribulationStrikes > 0;
+
+        public int SeclusionTicks => UnityEngine.Mathf.RoundToInt(seclusionDays * RimWorld.GenDate.TicksPerDay);
 
         public int StageCount => stageCosts.Count;
 

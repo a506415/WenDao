@@ -44,6 +44,13 @@ namespace WenDao
         public static JobDef WD_Cultivate;
         public static ThingDef WD_MeditationCushion;
 
+        public static HediffDef WD_InSeclusion;
+        public static ThoughtDef WD_BreakthroughSucceeded;
+        public static ThoughtDef WD_BreakthroughFailed;
+        public static JobDef WD_Seclusion;
+        public static JobDef WD_GuardSeclusion;
+        public static GameConditionDef WD_HeavenlyTribulation;
+
         static WD_DefOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(WD_DefOf));

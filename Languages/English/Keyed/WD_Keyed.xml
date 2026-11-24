@@ -18,7 +18,8 @@
 
   <!-- Cultivation -->
   <WD_Bottleneck>bottleneck</WD_Bottleneck>
-  <WD_BottleneckDesc>This realm is complete. No further progress is possible without a breakthrough to the next realm.</WD_BottleneckDesc>
+  <WD_BottleneckDesc>This realm is complete. Further meditation builds insight; once insight is full, enter seclusion on a cushion to break through. You can also force a breakthrough early.</WD_BottleneckDesc>
+  <WD_BottleneckNoNextRealm>This realm is complete. Higher realms are not available yet.</WD_BottleneckNoNextRealm>
   <WD_CultivationProgress>Stage progress: {0} / {1}</WD_CultivationProgress>
   <WD_ZhenyuanCapacity>True essence capacity: {0}</WD_ZhenyuanCapacity>
   <WD_StageAdvanced>{0} advanced to {1} ({2}).</WD_StageAdvanced>
@@ -26,4 +27,34 @@
   <WD_GainPerHour>(+{0} progress/hour)</WD_GainPerHour>
   <WD_StatPartSpiritRoot>{0}: {1}</WD_StatPartSpiritRoot>
   <WD_StatPartMindState>Mind state: {0}</WD_StatPartMindState>
+
+  <!-- Insight, lifespan -->
+  <WD_Insight>insight</WD_Insight>
+  <WD_InsightProgress>Insight: {0} / {1}</WD_InsightProgress>
+  <WD_InsightFull>{0}'s insight is complete. They can enter seclusion on a cushion to break through to {1}.</WD_InsightFull>
+  <WD_LifespanRemaining>Lifespan left: {0} years (realm cap {1}, lost {2})</WD_LifespanRemaining>
+  <WD_LetterLifespanWarningLabel>{0} is near the end</WD_LetterLifespanWarningLabel>
+  <WD_LetterLifespanWarning>{0} has about {1} years of lifespan left. Without a breakthrough or a longevity elixir, they will pass away.</WD_LetterLifespanWarning>
+  <WD_LetterLifespanEndedLabel>{0} passed away</WD_LetterLifespanEndedLabel>
+  <WD_LetterLifespanEnded>{0}'s lifespan ran out. Never able to rise beyond {1}, they passed away in meditation.</WD_LetterLifespanEnded>
+
+  <!-- Breakthrough -->
+  <WD_StartSeclusion>Enter seclusion to break through ({0} chance, {1} days)</WD_StartSeclusion>
+  <WD_StartForcedSeclusion>Force a breakthrough (insight {0}, {1} chance, {2} days, costs {3} years even on success)</WD_StartForcedSeclusion>
+  <WD_GuardSeclusion>Guard {0} in seclusion</WD_GuardSeclusion>
+  <WD_SeclusionReport>(current chance {0})</WD_SeclusionReport>
+  <WD_LetterBreakthroughSuccessLabel>{0} broke through</WD_LetterBreakthroughSuccessLabel>
+  <WD_LetterBreakthroughSuccess>{0} shattered the bottleneck and entered {1}!</WD_LetterBreakthroughSuccess>
+  <WD_LetterForcedCost>Forcing it damaged their foundation: {0} years of lifespan lost.</WD_LetterForcedCost>
+  <WD_LetterBreakthroughFailedLabel>{0} failed to break through</WD_LetterBreakthroughFailedLabel>
+  <WD_LetterBreakthroughFailed>{0} failed to break the {1} bottleneck ({2}). The energy turned back on them and their insight is lost:</WD_LetterBreakthroughFailed>
+  <WD_LetterLifespanLost>lost {0} years of lifespan</WD_LetterLifespanLost>
+  <WD_FailReasonRoll>{0} chance</WD_FailReasonRoll>
+  <WD_FailReasonInterrupted>seclusion interrupted</WD_FailReasonInterrupted>
+  <WD_FailReasonFledTribulation>fled the tribulation</WD_FailReasonFledTribulation>
+
+  <!-- Tribulation -->
+  <WD_LetterTribulationLabel>Heavenly tribulation: {0}</WD_LetterTribulationLabel>
+  <WD_LetterTribulation>{0}'s breakthrough has drawn heaven's tribulation! In about {3} hours, {2} bolts of lightning will strike {0} one after another. Survive them to enter {1}.\n\nThe strikes hit the area around them and can start fires. Everyone else should stay well away. If {0} leaves before the tribulation ends, the breakthrough fails.</WD_LetterTribulation>
+  <WD_TribulationProgress>Strikes: {0} / {1}</WD_TribulationProgress>
 </LanguageData>

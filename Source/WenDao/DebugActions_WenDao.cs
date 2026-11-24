@@ -29,7 +29,7 @@ namespace WenDao
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         private static void AddCultivation(Pawn p)
         {
-            CultivationUtility.GetOrStartCultivation(p)?.AddProgress(100f);
+            CultivationUtility.GetOrStartCultivation(p)?.AddCultivation(100f);
         }
 
         [DebugAction("WenDao", "Advance realm (skip breakthrough)", actionType = DebugActionType.ToolMapForPawns,
@@ -39,6 +39,41 @@ namespace WenDao
             Hediff_Cultivation c = CultivationUtility.GetOrStartCultivation(p);
             if (c != null && c.AdvanceRealm())
                 p.health.Notify_HediffChanged(c);
+        }
+
+        [DebugAction("WenDao", "Fill insight", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void FillInsight(Pawn p)
+        {
+            Hediff_Cultivation c = p.GetCultivation();
+            if (c != null && c.CanAttemptBreakthrough)
+                c.AddInsight(c.realm.insightRequired);
+        }
+
+        [DebugAction("WenDao", "Lose 10 years lifespan", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void LoseLifespan(Pawn p)
+        {
+            p.GetCultivation()?.LoseLifespan(10f);
+        }
+
+        [DebugAction("WenDao", "Resolve breakthrough now", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void ResolveBreakthroughNow(Pawn p)
+        {
+            BreakthroughUtility.ResolveSeclusion(p, 0f);
+        }
+
+        [DebugAction("WenDao", "Start tribulation (skip roll)", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void StartTribulation(Pawn p)
+        {
+            Hediff_Cultivation c = p.GetCultivation();
+            CultivationRealmDef next = c?.realm.Next;
+            if (next != null && next.HasTribulation && p.Spawned)
+                GameCondition_HeavenlyTribulation.Start(p, next, false);
+            else
+                Messages.Message("Next realm has no tribulation.", RimWorld.MessageTypeDefOf.RejectInput, false);
         }
 
         [DebugAction("WenDao", "Fill true essence", actionType = DebugActionType.ToolMapForPawns,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_InSeclusion.label>閉關</WD_InSeclusion.label>
+  <WD_InSeclusion.description>閉關衝擊下一境界。飢餓與疲勞幾乎停滯；任何打斷都會引發劇烈反噬。</WD_InSeclusion.description>
+
+  <WD_QiBacklash.label>反噬內傷</WD_QiBacklash.label>
+  <WD_QiBacklash.description>突破失敗後靈力倒灌所致的內傷，數日內會逐漸痊癒。</WD_QiBacklash.description>
+  <WD_QiBacklash.stages.minor.label>輕微</WD_QiBacklash.stages.minor.label>
+  <WD_QiBacklash.stages.moderate.label>中等</WD_QiBacklash.stages.moderate.label>
+  <WD_QiBacklash.stages.severe.label>嚴重</WD_QiBacklash.stages.severe.label>
+
+  <WD_DamagedFoundation.label>根基受損</WD_DamagedFoundation.label>
+  <WD_DamagedFoundation.description>突破失敗震裂了修士的根基，修煉速度永久下降；屢次失敗會更加嚴重。</WD_DamagedFoundation.description>
+  <WD_DamagedFoundation.stages.grave.label>重創</WD_DamagedFoundation.stages.grave.label>
+  <WD_DamagedFoundation.stages.shattered.label>崩毀</WD_DamagedFoundation.stages.shattered.label>
+</LanguageData>

@@ -7,7 +7,7 @@ namespace WenDao
 {
     /// <summary>
     /// 打坐：走到蒲團或空地，坐一段時間（WD_Tuning.sessionTicks），
-    /// 每 250 tick 結算一次修為並抽取周圍靈氣；到瓶頸即停。
+    /// 每 250 tick 結算一次修為（瓶頸時為感悟）並抽取周圍靈氣；無可再得即停。
     /// </summary>
     public class JobDriver_Cultivate : JobDriver
     {
@@ -43,15 +43,15 @@ namespace WenDao
                 if (!pawn.IsHashIntervalTick(Interval))
                     return;
                 Hediff_Cultivation c = CultivationUtility.GetOrStartCultivation(pawn);
-                if (c == null || c.AtBottleneck)
+                if (c == null || !CultivationUtility.CanCultivateNow(pawn))
                 {
                     EndJobWith(JobCondition.Succeeded);
                     return;
                 }
                 float gain = CultivationUtility.GainPerHour(pawn, pawn.Position, Efficiency) * Interval / 2500f;
-                c.AddProgress(gain);
+                c.AddCultivation(gain);
                 MapComponent_SpiritQi.For(pawn.Map)?.Drain(pawn.Position, Interval);
-                if (c.AtBottleneck)
+                if (!CultivationUtility.CanCultivateNow(pawn))
                     EndJobWith(JobCondition.Succeeded);
             };
             sit.defaultCompleteMode = ToilCompleteMode.Delay;

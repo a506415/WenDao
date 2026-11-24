@@ -24,6 +24,22 @@
     <!-- 真元：每天自然回復上限的比例 × 該格靈氣；打坐時乘以倍率 -->
     <zhenyuanRegenPerDay>1.0</zhenyuanRegenPerDay>
     <zhenyuanCultivatingFactor>3</zhenyuanCultivatingFactor>
+
+    <!-- 突破：成功率 = 境界基礎成功率 × 強行係數 + 護法加成，夾在 breakthroughChanceRange。
+         強行係數 = Lerp(forcedChanceMin, 1, 感悟比例)；強行且成功仍折壽新境界壽元上限的 forcedLifespanCapFraction。
+         護法加成 = guardBonus × 閉關期間有護法在 guardRadius 內的時間比例。 -->
+    <forcedChanceMin>0.3</forcedChanceMin>
+    <forcedLifespanCapFraction>0.1</forcedLifespanCapFraction>
+    <guardBonus>0.15</guardBonus>
+    <guardRadius>3.9</guardRadius>
+    <breakthroughChanceRange>0.02~0.95</breakthroughChanceRange>
+
+    <!-- 天劫：預警後開始，每隔一段時間一道雷；落雷點在突破者旁 2~3 格（波及旁人），另直接灼傷突破者。 -->
+    <tribulationWarningTicks>2500</tribulationWarningTicks>
+    <tribulationIntervalTicks>600</tribulationIntervalTicks>
+
+    <!-- 壽元：剩餘少於此年數時發警告信 -->
+    <lifespanWarningYears>5</lifespanWarningYears>
   </WenDao.WenDaoTuningDef>
 
   <!-- ===== 境界 =====
@@ -35,6 +51,18 @@
     <label>Qi Refining</label>
     <order>1</order>
     <zhenyuanMax>20</zhenyuanMax>
+    <lifespanYears>120</lifespanYears>
+    <!-- 突破出此境界（→ 築基） -->
+    <insightRequired>60</insightRequired>
+    <seclusionDays>1</seclusionDays>
+    <breakthroughChance>0.75</breakthroughChance>
+    <failureLifespanLoss>1~3</failureLifespanLoss>
+    <failureHediffs>
+      <li>
+        <hediff>WD_QiBacklash</hediff>
+        <severity>0.35</severity>
+      </li>
+    </failureHediffs>
     <stageLabels>
       <li>layer 1</li>
       <li>layer 2</li>
@@ -64,6 +92,22 @@
     <label>Foundation Establishment</label>
     <order>2</order>
     <zhenyuanMax>60</zhenyuanMax>
+    <lifespanYears>200</lifespanYears>
+    <!-- 突破出此境界（→ 金丹） -->
+    <insightRequired>250</insightRequired>
+    <seclusionDays>2</seclusionDays>
+    <breakthroughChance>0.55</breakthroughChance>
+    <failureLifespanLoss>5~10</failureLifespanLoss>
+    <failureHediffs>
+      <li>
+        <hediff>WD_QiBacklash</hediff>
+        <severity>0.6</severity>
+      </li>
+      <li>
+        <hediff>WD_DamagedFoundation</hediff>
+        <severity>1</severity>
+      </li>
+    </failureHediffs>
     <stageLabels>
       <li>early</li>
       <li>middle</li>
@@ -83,6 +127,11 @@
     <label>Golden Core</label>
     <order>3</order>
     <zhenyuanMax>150</zhenyuanMax>
+    <lifespanYears>400</lifespanYears>
+    <!-- 突破進此境界要渡天劫 -->
+    <tribulationStrikes>9</tribulationStrikes>
+    <tribulationDamage>5~8</tribulationDamage>
+    <!-- 突破出金丹（→ 元嬰）屬 Phase 3：走火入魔、境界跌落、折壽 20–50 年 -->
     <stageLabels>
       <li>early</li>
       <li>middle</li>
