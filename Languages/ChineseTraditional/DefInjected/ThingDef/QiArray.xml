@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_SpiritStone.label>靈石</WD_SpiritStone.label>
+  <WD_SpiritStone.description>歷經漫長歲月吸納靈氣的晶石，可為陣法供能。</WD_SpiritStone.description>
+  <WD_MineableSpiritStone.label>靈石礦脈</WD_MineableSpiritStone.label>
+  <WD_MineableSpiritStone.description>蘊含靈石的岩石。</WD_MineableSpiritStone.description>
+  <WD_QiGatheringArray.label>聚靈陣</WD_QiGatheringArray.label>
+  <WD_QiGatheringArray.description>聚靈陣的陣眼，將靈氣引聚至周圍。建成或搬移後須由修士布陣，並以靈石供能。範圍重疊時不疊加，取最強者。</WD_QiGatheringArray.description>
+</LanguageData>

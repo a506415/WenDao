@@ -82,4 +82,13 @@
   <WD_FurnaceNoFuel>丹爐沒有燃料，也無法補充</WD_FurnaceNoFuel>
   <WD_RootBreakthrough>突破基礎成功率：×{0}（丹藥與護法加成不受影響）</WD_RootBreakthrough>
   <WD_ElixirWeaker>{0} 體內藥力更強，這顆{1}未能生效。</WD_ElixirWeaker>
+
+  <!-- 聚靈陣 -->
+  <WD_ArraySetUp>{0} 布陣完成，靈氣 +{1}。</WD_ArraySetUp>
+  <WD_ArrayNotSetUp>尚未布陣（需由修士右鍵布陣）</WD_ArrayNotSetUp>
+  <WD_ArrayStrength>陣法強度：靈氣 +{0}</WD_ArrayStrength>
+  <WD_ArrayInactive>未運轉</WD_ArrayInactive>
+  <WD_SetupArray>布陣</WD_SetupArray>
+  <WD_ReSetupArray>重新布陣</WD_ReSetupArray>
+  <WD_OnlyCultivatorsArray>只有修士能布陣</WD_OnlyCultivatorsArray>
 </LanguageData>

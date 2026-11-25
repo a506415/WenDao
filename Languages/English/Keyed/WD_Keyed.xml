@@ -82,4 +82,13 @@
   <WD_FurnaceNoFuel>Furnace has no fuel and cannot be refuelled</WD_FurnaceNoFuel>
   <WD_RootBreakthrough>Base breakthrough chance: x{0} (elixir and guard bonuses unaffected)</WD_RootBreakthrough>
   <WD_ElixirWeaker>{0} is already under a stronger dose; the {1} had no effect.</WD_ElixirWeaker>
+
+  <!-- 聚靈陣 -->
+  <WD_ArraySetUp>{0} finished laying the formation: spirit qi +{1}.</WD_ArraySetUp>
+  <WD_ArrayNotSetUp>Formation not laid yet (a cultivator must lay it)</WD_ArrayNotSetUp>
+  <WD_ArrayStrength>Formation strength: spirit qi +{0}</WD_ArrayStrength>
+  <WD_ArrayInactive>inactive</WD_ArrayInactive>
+  <WD_SetupArray>Lay formation</WD_SetupArray>
+  <WD_ReSetupArray>Re-lay formation</WD_ReSetupArray>
+  <WD_OnlyCultivatorsArray>only cultivators can lay formations</WD_OnlyCultivatorsArray>
 </LanguageData>

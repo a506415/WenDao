@@ -7,8 +7,8 @@ using Verse.Noise;
 namespace WenDao
 {
     /// <summary>
-    /// 每張地圖的天地靈氣格網。baseQi 為地脈基準（聚靈陣、靈脈事件日後改這層），
-    /// qi 為目前濃度：打坐者會抽走，之後逐步回復到基準。
+    /// 每張地圖的天地靈氣格網。baseQi 為地脈基準，arrayBonus 為聚靈陣加成（取最強、不疊加、不存檔），
+    /// qi 為目前濃度：打坐者會抽走，之後逐步趨近「基準 + 加成」。
     /// </summary>
     public class MapComponent_SpiritQi : MapComponent, ICellBoolGiver
     {
@@ -21,7 +21,10 @@ namespace WenDao
         private float[] baseQi;
         private float[] qi;
         private bool generated;
-        private readonly HashSet<int> depleted = new HashSet<int>();
+        private float[] arrayBonus;
+        private readonly Dictionary<CompQiArray, float> arrays = new Dictionary<CompQiArray, float>();
+        /// <summary>濃度尚未回到目標值的格子。</summary>
+        private readonly HashSet<int> unsettled = new HashSet<int>();
         private CellBoolDrawer drawer;
 
         public MapComponent_SpiritQi(Map map) : base(map)
@@ -38,6 +41,62 @@ namespace WenDao
                 baseQi = new float[NumCells];
             if (qi == null || qi.Length != NumCells)
                 qi = new float[NumCells];
+            if (arrayBonus == null || arrayBonus.Length != NumCells)
+                arrayBonus = new float[NumCells];
+        }
+
+        private float TargetQi(int i) => baseQi[i] + arrayBonus[i];
+
+        public void RegisterArray(CompQiArray array) => arrays[array] = 0f;
+
+        public void UnregisterArray(CompQiArray array)
+        {
+            if (arrays.Remove(array))
+                RecomputeArrays();
+        }
+
+        /// <summary>陣法供能狀態或強度變了才重算。</summary>
+        private void UpdateArrays()
+        {
+            bool changed = false;
+            foreach (KeyValuePair<CompQiArray, float> kv in arrays)
+            {
+                if (kv.Key.ActiveStrength != kv.Value)
+                {
+                    changed = true;
+                    break;
+                }
+            }
+            if (changed)
+                RecomputeArrays();
+        }
+
+        private void RecomputeArrays()
+        {
+            if (baseQi == null)
+                return;
+            EnsureArrays();
+            var fresh = new float[NumCells];
+            foreach (CompQiArray array in new List<CompQiArray>(arrays.Keys))
+            {
+                float s = array.ActiveStrength;
+                arrays[array] = s;
+                if (s <= 0f)
+                    continue;
+                foreach (IntVec3 c in GenRadial.RadialCellsAround(array.parent.Position, array.Props.radius, true))
+                {
+                    if (!c.InBounds(map))
+                        continue;
+                    int i = map.cellIndices.CellToIndex(c);
+                    fresh[i] = Mathf.Max(fresh[i], s);
+                }
+            }
+            for (int i = 0; i < fresh.Length; i++)
+            {
+                if (fresh[i] != arrayBonus[i])
+                    unsettled.Add(i);
+            }
+            arrayBonus = fresh;
         }
 
         public override void FinalizeInit()
@@ -45,11 +104,12 @@ namespace WenDao
             EnsureArrays();
             if (!generated)
                 Generate();
-            depleted.Clear();
+            RecomputeArrays();
+            unsettled.Clear();
             for (int i = 0; i < NumCells; i++)
             {
-                if (qi[i] < baseQi[i])
-                    depleted.Add(i);
+                if (Mathf.Abs(qi[i] - TargetQi(i)) > 0.001f)
+                    unsettled.Add(i);
             }
         }
 
@@ -83,7 +143,7 @@ namespace WenDao
         {
             if (baseQi == null || !c.InBounds(map))
                 return 0f;
-            return baseQi[map.cellIndices.CellToIndex(c)];
+            return TargetQi(map.cellIndices.CellToIndex(c));
         }
 
         /// <summary>打坐者每 <paramref name="ticks"/> tick 呼叫一次，抽取周圍靈氣。</summary>
@@ -99,21 +159,24 @@ namespace WenDao
                     continue;
                 int i = map.cellIndices.CellToIndex(c);
                 qi[i] = Mathf.Max(t.minQi, qi[i] - amount);
-                depleted.Add(i);
+                unsettled.Add(i);
             }
         }
 
         public override void MapComponentTick()
         {
-            if (Find.TickManager.TicksGame % UpdateInterval != 0 || depleted.Count == 0)
+            if (Find.TickManager.TicksGame % UpdateInterval != 0)
+                return;
+            UpdateArrays();
+            if (unsettled.Count == 0)
                 return;
             float frac = WenDaoTuningDef.Get.qiRegenFractionPerHour * UpdateInterval / GenDate.TicksPerHour;
-            depleted.RemoveWhere(i =>
+            unsettled.RemoveWhere(i =>
             {
-                float gap = baseQi[i] - qi[i];
-                if (gap <= 0.001f)
+                float gap = TargetQi(i) - qi[i];
+                if (Mathf.Abs(gap) <= 0.001f)
                 {
-                    qi[i] = baseQi[i];
+                    qi[i] = TargetQi(i);
                     return true;
                 }
                 qi[i] += gap * frac;

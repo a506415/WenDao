@@ -56,6 +56,7 @@ namespace WenDao
         public static HediffDef WD_BloodBurning;
         public static HediffDef WD_PillToxicity;
         public static WorkTypeDef WD_Alchemy;
+        public static JobDef WD_SetupArray;
         public static DamageDef WD_TribulationLightning;
 
         static WD_DefOf()

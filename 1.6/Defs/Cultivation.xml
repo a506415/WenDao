@@ -49,6 +49,15 @@
 
     <!-- 煉丹：造詣 = (醫療+智識)/2 + 每個大境界加成；炸爐；延壽丹每多服一顆的效果倍率；
          品質（0 極差 … 6 傳說）對藥效與丹毒的倍率。 -->
+    <!-- 布陣：造詣 = (建造+智識)/2 + 每個大境界加成；聚靈陣提高的靈氣基準。 -->
+    <arraySkillPerRealm>3</arraySkillPerRealm>
+    <arrayStrengthBySkill>
+      <points>
+        <li>(0, 0.2)</li>
+        <li>(10, 0.45)</li>
+        <li>(20, 0.8)</li>
+      </points>
+    </arrayStrengthBySkill>
     <alchemySkillPerRealm>3</alchemySkillPerRealm>
     <furnaceExplosionRadius>1.9</furnaceExplosionRadius>
     <furnaceExplosionDamage>8</furnaceExplosionDamage>

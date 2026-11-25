@@ -39,6 +39,8 @@ namespace WenDao
         public int autoDefendWindowTicks = 120;
 
         public float alchemySkillPerRealm = 3f;
+        public float arraySkillPerRealm = 3f;
+        public SimpleCurve arrayStrengthBySkill;
         public float furnaceExplosionRadius = 1.9f;
         public int furnaceExplosionDamage = 8;
         public float longevityRepeatFactor = 0.5f;
