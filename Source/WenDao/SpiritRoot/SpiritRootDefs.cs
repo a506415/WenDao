@@ -52,6 +52,7 @@ namespace WenDao
         public static GameConditionDef WD_HeavenlyTribulation;
         public static JobDef WD_EndureTribulation;
         public static HediffDef WD_BloodBurning;
+        public static HediffDef WD_PillToxicity;
         public static DamageDef WD_TribulationLightning;
 
         static WD_DefOf()

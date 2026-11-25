@@ -21,6 +21,8 @@ namespace WenDao
         /// <summary>累計折壽（年）。</summary>
         public float lifespanLost;
         private bool lifespanWarned;
+        /// <summary>已服延壽丹數，用於效果遞減。</summary>
+        public int longevityTaken;
 
         public float StageCost => realm.stageCosts[stage];
 
@@ -140,6 +142,14 @@ namespace WenDao
             CheckLifespan();
         }
 
+        /// <summary>增壽（年）；累計折壽可為負。</summary>
+        public void GainLifespan(float years)
+        {
+            lifespanLost -= years;
+            if (LifespanRemainingYears >= WenDaoTuningDef.Get.lifespanWarningYears)
+                lifespanWarned = false;
+        }
+
         /// <summary>打坐所得：未到瓶頸加修為；瓶頸時加感悟。</summary>
         public void AddCultivation(float amount)
         {
@@ -218,6 +228,7 @@ namespace WenDao
             Scribe_Values.Look(ref insight, "insight");
             Scribe_Values.Look(ref lifespanLost, "lifespanLost");
             Scribe_Values.Look(ref lifespanWarned, "lifespanWarned");
+            Scribe_Values.Look(ref longevityTaken, "longevityTaken");
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 if (realm == null)

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_Alchemy.labelShort>煉丹</WD_Alchemy.labelShort>
+  <WD_Alchemy.pawnLabel>煉丹師</WD_Alchemy.pawnLabel>
+  <WD_Alchemy.gerundLabel>煉丹</WD_Alchemy.gerundLabel>
+  <WD_Alchemy.description>在丹爐煉製丹藥。只有修士能從事。</WD_Alchemy.description>
+  <WD_Alchemy.verb>煉丹</WD_Alchemy.verb>
+</LanguageData>

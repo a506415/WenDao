@@ -69,4 +69,12 @@
   <WD_SpellPower>Power: {0}</WD_SpellPower>
   <WD_SpellAutoCast>Cast automatically when hurt while not drafted.</WD_SpellAutoCast>
   <WD_NothingToHeal>{0} has no fresh wounds to heal.</WD_NothingToHeal>
+
+  <!-- 煉丹 -->
+  <WD_FurnaceExploded>The furnace exploded while {0} was refining {1}!</WD_FurnaceExploded>
+  <WD_OnlyCultivators>Only cultivators can refine elixirs</WD_OnlyCultivators>
+  <WD_ElixirWastedMortal>{0} is not a cultivator and cannot absorb the {1}. It was wasted.</WD_ElixirWastedMortal>
+  <WD_LifespanGained>{0} gained {1} years of lifespan.</WD_LifespanGained>
+  <WD_PlantQi>Multiplier for spirit qi: {0}</WD_PlantQi>
+  <WD_PlantNeedsQi>Not growing: spirit qi too thin (needs {0})</WD_PlantNeedsQi>
 </LanguageData>

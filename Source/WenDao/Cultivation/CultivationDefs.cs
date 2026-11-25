@@ -38,6 +38,13 @@ namespace WenDao
         public float bloodBurningSpellPower = 1.5f;
         public int autoDefendWindowTicks = 120;
 
+        public float alchemySkillPerRealm = 3f;
+        public float furnaceExplosionRadius = 1.9f;
+        public int furnaceExplosionDamage = 8;
+        public float longevityRepeatFactor = 0.5f;
+        public SimpleCurve elixirEffectByQuality;
+        public SimpleCurve elixirToxicityByQuality;
+
         public static WenDaoTuningDef Get => WD_DefOf.WD_Tuning;
     }
 

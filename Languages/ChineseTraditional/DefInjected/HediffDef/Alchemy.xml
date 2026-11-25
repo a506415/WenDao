@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_QiGathering.label>聚氣</WD_QiGathering.label>
+  <WD_QiGathering.description>丹藥引動靈氣入體，修煉速度提高。</WD_QiGathering.description>
+  <WD_FoundationAid.label>築基丹藥力</WD_FoundationAid.label>
+  <WD_FoundationAid.description>築基丹藥力未散，提高突破至築基的成功率，突破判定後消耗。</WD_FoundationAid.description>
+  <WD_PillToxicity.label>丹毒</WD_PillToxicity.label>
+  <WD_PillToxicity.description>丹藥雜質積於經脈，緩慢消退。過量會拖慢修煉並損傷身體。</WD_PillToxicity.description>
+  <WD_PillToxicity.stages.trace.label>微量</WD_PillToxicity.stages.trace.label>
+  <WD_PillToxicity.stages.mild.label>輕度</WD_PillToxicity.stages.mild.label>
+  <WD_PillToxicity.stages.heavy.label>沉積</WD_PillToxicity.stages.heavy.label>
+  <WD_PillToxicity.stages.meridian_damage.label>經脈受損</WD_PillToxicity.stages.meridian_damage.label>
+</LanguageData>

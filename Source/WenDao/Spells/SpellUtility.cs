@@ -54,6 +54,26 @@ namespace WenDao
             return power;
         }
 
+        public static IEnumerable<Hediff_Injury> Healable(Pawn p)
+        {
+            return p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i => !i.IsPermanent() && i.Severity > 0f);
+        }
+
+        /// <summary>癒合新傷，先治流血最兇的傷口。</summary>
+        public static void HealInjuries(Pawn p, float total)
+        {
+            foreach (Hediff_Injury injury in Healable(p).OrderByDescending(i => i.BleedRate).ThenByDescending(i => i.Severity).ToList())
+            {
+                float amount = UnityEngine.Mathf.Min(total, injury.Severity);
+                injury.Heal(amount);
+                total -= amount;
+                if (total <= 0f)
+                    break;
+            }
+            if (p.Spawned)
+                FleckMaker.ThrowMetaIcon(p.Position, p.Map, FleckDefOf.HealingCross);
+        }
+
         /// <summary>非徵召時只自動施放防禦法術：剛受到攻擊、真元足夠才用。</summary>
         public static void TryAutoDefend(Pawn pawn)
         {

@@ -40,8 +40,27 @@ namespace WenDao
         {
             WenDaoTuningDef t = WenDaoTuningDef.Get;
             float forcedFactor = c.InsightFull ? 1f : Mathf.Lerp(t.forcedChanceMin, 1f, c.InsightPct);
-            float chance = c.realm.breakthroughChance * forcedFactor + t.guardBonus * Mathf.Clamp01(guardedFraction);
+            float chance = c.realm.breakthroughChance * forcedFactor + t.guardBonus * Mathf.Clamp01(guardedFraction) + AidBonus(c);
             return Mathf.Clamp(chance, t.breakthroughChanceRange.min, t.breakthroughChanceRange.max);
+        }
+
+        /// <summary>築基丹等突破輔助的加成。</summary>
+        public static float AidBonus(Hediff_Cultivation c)
+        {
+            float sum = 0f;
+            foreach (Hediff h in c.pawn.health.hediffSet.hediffs)
+            {
+                if (h is Hediff_BreakthroughAid aid && aid.AppliesTo(c.realm))
+                    sum += aid.Severity;
+            }
+            return sum;
+        }
+
+        private static void ConsumeAids(Hediff_Cultivation c)
+        {
+            foreach (Hediff_BreakthroughAid aid in c.pawn.health.hediffSet.hediffs.OfType<Hediff_BreakthroughAid>()
+                         .Where(a => a.AppliesTo(c.realm)).ToList())
+                c.pawn.health.RemoveHediff(aid);
         }
 
         /// <summary>護法實際帶來的成功率加成（已計入上下限）。</summary>
@@ -75,9 +94,11 @@ namespace WenDao
                 return;
             bool forced = !c.InsightFull;
             float chance = SuccessChance(c, guardedFraction);
+            float guardBonus = GuardBonus(c, guardedFraction);
+            ConsumeAids(c);
             if (!Rand.Chance(chance))
             {
-                Fail(pawn, "WD_FailReasonRoll".Translate(chance.ToStringPercent(), GuardBonus(c, guardedFraction).ToStringPercent()));
+                Fail(pawn, "WD_FailReasonRoll".Translate(chance.ToStringPercent(), guardBonus.ToStringPercent()));
                 return;
             }
             CultivationRealmDef next = c.realm.Next;
@@ -116,6 +137,7 @@ namespace WenDao
             CultivationRealmDef realm = c.realm;
             float years = realm.failureLifespanLoss.RandomInRange;
             c.insight = 0f;
+            ConsumeAids(c);
 
             var text = new StringBuilder("WD_LetterBreakthroughFailed".Translate(pawn.LabelShort, realm.label, reason));
             foreach (HediffSeverity hs in realm.failureHediffs)

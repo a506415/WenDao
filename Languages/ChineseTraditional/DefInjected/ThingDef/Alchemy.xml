@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_Plant_SpiritHerb.label>靈草</WD_Plant_SpiritHerb.label>
+  <WD_Plant_SpiritHerb.description>以靈氣滋養的常見藥草，靈氣越濃長得越快，為煉丹基本材料。</WD_Plant_SpiritHerb.description>
+  <WD_Plant_Lingzhi.label>靈芝</WD_Plant_Lingzhi.label>
+  <WD_Plant_Lingzhi.description>稀有靈藥，只在靈氣濃郁處生長，用於煉製高階丹藥。</WD_Plant_Lingzhi.description>
+  <WD_SpiritHerb.label>靈草</WD_SpiritHerb.label>
+  <WD_SpiritHerb.description>採收的靈草，多數丹藥的基本材料。</WD_SpiritHerb.description>
+  <WD_Lingzhi.label>靈芝</WD_Lingzhi.label>
+  <WD_Lingzhi.description>稀有靈藥，用於煉製高階丹藥。</WD_Lingzhi.description>
+  <WD_AlchemyFurnace.label>丹爐</WD_AlchemyFurnace.label>
+  <WD_AlchemyFurnace.description>以木柴為火的煉丹爐，只有修士能掌控火候。煉製高階丹藥時有炸爐之虞。</WD_AlchemyFurnace.description>
+  <WD_QiGatheringPill.label>聚氣丹</WD_QiGatheringPill.label>
+  <WD_QiGatheringPill.description>服下後約一日內修煉速度提高，品質越好持續越久。</WD_QiGatheringPill.description>
+  <WD_EssencePill.label>回元丹</WD_EssencePill.label>
+  <WD_EssencePill.description>立即回復部分真元。</WD_EssencePill.description>
+  <WD_HealingPill.label>療傷丹</WD_HealingPill.label>
+  <WD_HealingPill.description>癒合新傷，優先處理流血最嚴重的傷口，凡人亦可服用。</WD_HealingPill.description>
+  <WD_FoundationPill.label>築基丹</WD_FoundationPill.label>
+  <WD_FoundationPill.description>提高下一次由練氣突破築基的成功率。突破判定後即消耗，數日內未用則藥力散盡，不可疊加。</WD_FoundationPill.description>
+  <WD_LongevityPill.label>延壽丹</WD_LongevityPill.label>
+  <WD_LongevityPill.description>為修士增添壽元；每多服一顆，效果遞減。</WD_LongevityPill.description>
+</LanguageData>

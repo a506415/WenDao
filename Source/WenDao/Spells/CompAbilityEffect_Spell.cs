@@ -176,15 +176,10 @@ namespace WenDao
 
     public class CompAbilityEffect_SpellHeal : CompAbilityEffect_SpellEffect
     {
-        private static IEnumerable<Hediff_Injury> Healable(Pawn p)
-        {
-            return p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i => !i.IsPermanent() && i.Severity > 0f);
-        }
-
         public override bool Valid(LocalTargetInfo target, bool throwMessages = false)
         {
             Pawn p = target.Pawn;
-            if (p == null || !p.RaceProps.IsFlesh || !Healable(p).Any())
+            if (p == null || !p.RaceProps.IsFlesh || !SpellUtility.Healable(p).Any())
             {
                 if (throwMessages && p != null)
                     Messages.Message("WD_NothingToHeal".Translate(p.LabelShort), p, MessageTypeDefOf.RejectInput, false);
@@ -199,18 +194,7 @@ namespace WenDao
             Pawn p = target.Pawn;
             if (p == null)
                 return;
-            // 先治流血最兇的傷口。
-            float left = ((CompProperties_SpellHeal)props).healAmount * Power;
-            foreach (Hediff_Injury injury in Healable(p).OrderByDescending(i => i.BleedRate).ThenByDescending(i => i.Severity).ToList())
-            {
-                float amount = UnityEngine.Mathf.Min(left, injury.Severity);
-                injury.Heal(amount);
-                left -= amount;
-                if (left <= 0f)
-                    break;
-            }
-            if (p.Spawned)
-                FleckMaker.ThrowMetaIcon(p.Position, p.Map, FleckDefOf.HealingCross);
+            SpellUtility.HealInjuries(p, ((CompProperties_SpellHeal)props).healAmount * Power);
         }
     }
 

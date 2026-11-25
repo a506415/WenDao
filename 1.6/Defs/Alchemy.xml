@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===== 靈植（貼圖為原版改色佔位）===== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>WD_Plant_SpiritHerb</defName>
+    <label>spirit herb</label>
+    <description>A common herb that feeds on spirit qi. It grows faster where qi is dense. Used in alchemy.</description>
+    <thingClass>WenDao.Plant_Spirit</thingClass>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Nutrition>0.1</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plant/Astragalus</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <color>(0.6,0.9,1)</color>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>14</pathCost>
+    <ingestible />
+    <plant>
+      <growDays>6</growDays>
+      <dieIfLeafless>false</dieIfLeafless>
+      <harvestWork>300</harvestWork>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>WD_SpiritHerb</harvestedThingDef>
+      <harvestYield>4</harvestYield>
+      <sowWork>400</sowWork>
+      <sowMinSkill>4</sowMinSkill>
+      <sowTags>
+        <li>Ground</li>
+      </sowTags>
+      <purpose>Health</purpose>
+      <topWindExposure>0.1</topWindExposure>
+      <visualSizeRange>0.4~0.9</visualSizeRange>
+      <wildOrder>2</wildOrder>
+    </plant>
+    <modExtensions>
+      <li Class="WenDao.SpiritPlantExtension">
+        <minQi>0</minQi>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="PlantBase">
+    <defName>WD_Plant_Lingzhi</defName>
+    <label>lingzhi</label>
+    <description>A rare spirit fungus that only grows where spirit qi is dense. Used in advanced alchemy.</description>
+    <thingClass>WenDao.Plant_Spirit</thingClass>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Nutrition>0.1</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plant/Glowstool</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <color>(1,0.6,0.5)</color>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>14</pathCost>
+    <ingestible />
+    <plant>
+      <growDays>15</growDays>
+      <dieIfLeafless>false</dieIfLeafless>
+      <harvestWork>300</harvestWork>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>WD_Lingzhi</harvestedThingDef>
+      <harvestYield>1</harvestYield>
+      <sowWork>1000</sowWork>
+      <sowMinSkill>8</sowMinSkill>
+      <sowTags>
+        <li>Ground</li>
+      </sowTags>
+      <purpose>Health</purpose>
+      <topWindExposure>0.1</topWindExposure>
+      <visualSizeRange>0.4~0.9</visualSizeRange>
+      <wildOrder>2</wildOrder>
+    </plant>
+    <modExtensions>
+      <li Class="WenDao.SpiritPlantExtension">
+        <minQi>1.0</minQi>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>WD_SpiritHerb</defName>
+    <label>spirit herbs</label>
+    <description>Harvested spirit herbs, the basic ingredient of most elixirs.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Medicine/MedicineHerbal</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(0.6,0.9,1)</color>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <stackLimit>75</stackLimit>
+    <tickerType>Rare</tickerType>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>3</MarketValue>
+      <Mass>0.05</Mass>
+      <Flammability>1.3</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>60</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>WD_Lingzhi</defName>
+    <label>lingzhi</label>
+    <description>A rare spirit fungus used in advanced elixirs.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Medicine/MedicineHerbal</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(1,0.6,0.5)</color>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <stackLimit>75</stackLimit>
+    <tickerType>Rare</tickerType>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>30</MarketValue>
+      <Mass>0.05</Mass>
+      <Flammability>1.3</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>60</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===== 丹爐 ===== -->
+  <ThingDef ParentName="BenchBase">
+    <defName>WD_AlchemyFurnace</defName>
+    <label>alchemy furnace</label>
+    <description>A wood-fired furnace for refining elixirs. Only cultivators can control its flame. Advanced elixirs may make it explode.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <!-- 佔位貼圖：原版發酵桶 -->
+      <texPath>Things/Building/Production/FermentingBarrel</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <enabled>false</enabled>
+      </damageData>
+    </graphicData>
+    <costStuffCount>100</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.45</fillPercent>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <WorkToBuild>3000</WorkToBuild>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <designationCategory>WD_Cultivation</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>40</fuelConsumptionRate>
+        <fuelCapacity>50</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <WorkTypeDef>
+    <defName>WD_Alchemy</defName>
+    <labelShort>alchemy</labelShort>
+    <pawnLabel>alchemist</pawnLabel>
+    <gerundLabel>refining elixirs</gerundLabel>
+    <description>Refine elixirs at an alchemy furnace. Only cultivators can do this work.</description>
+    <verb>Refine elixirs</verb>
+    <naturalPriority>480</naturalPriority>
+    <relevantSkills>
+      <li>Medicine</li>
+      <li>Intellectual</li>
+    </relevantSkills>
+    <workTags>
+      <li>Intellectual</li>
+      <li>AllWork</li>
+    </workTags>
+  </WorkTypeDef>
+
+  <WorkGiverDef>
+    <defName>WD_DoBillsAlchemy</defName>
+    <label>refine elixirs</label>
+    <giverClass>WenDao.WorkGiver_Alchemy</giverClass>
+    <workType>WD_Alchemy</workType>
+    <priorityInType>100</priorityInType>
+    <fixedBillGiverDefs>
+      <li>WD_AlchemyFurnace</li>
+    </fixedBillGiverDefs>
+    <verb>refine elixirs at</verb>
+    <gerund>refining elixirs at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+    <canBeDoneByMechs>false</canBeDoneByMechs>
+  </WorkGiverDef>
+
+  <!-- ===== 丹藥 ===== -->
+  <ThingDef Name="WD_ElixirBase" ParentName="DrugPillBase" Abstract="True">
+    <thingClass>WenDao.Elixir</thingClass>
+    <rotatable>false</rotatable>
+    <stackLimit>25</stackLimit>
+    <tradeability>Sellable</tradeability>
+    <generateCommonality>0</generateCommonality>
+    <statBases>
+      <Mass>0.01</Mass>
+      <Flammability>0.7</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <techLevel>Neolithic</techLevel>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+    </ingestible>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="WD_ElixirBase">
+    <defName>WD_QiGatheringPill</defName>
+    <label>qi-gathering pill</label>
+    <description>Speeds up cultivation for about a day. Better quality lasts longer.</description>
+    <graphicData>
+      <texPath>Things/Item/Drug/Penoxycyline</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(0.6,0.85,1)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>40</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="WenDao.IngestionOutcomeDoer_ElixirHediff">
+          <hediff>WD_QiGathering</hediff>
+          <durationTicks>60000</durationTicks>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>2000</listOrder>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="WenDao.ElixirExtension">
+        <toxicity>0.12</toxicity>
+        <explodeChance>0</explodeChance>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="WD_ElixirBase">
+    <defName>WD_EssencePill</defName>
+    <label>essence-restoring pill</label>
+    <description>Restores part of a cultivator's true essence at once.</description>
+    <graphicData>
+      <texPath>Things/Item/Drug/Penoxycyline</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(0.7,0.6,1)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>35</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="WenDao.IngestionOutcomeDoer_ElixirZhenyuan">
+          <fraction>0.4</fraction>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>2001</listOrder>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="WenDao.ElixirExtension">
+        <toxicity>0.1</toxicity>
+        <explodeChance>0</explodeChance>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="WD_ElixirBase">
+    <defName>WD_HealingPill</defName>
+    <label>healing pill</label>
+    <description>Closes fresh wounds, worst bleeding first. Works on mortals too.</description>
+    <graphicData>
+      <texPath>Things/Item/Drug/Penoxycyline</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(0.6,1,0.6)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>45</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="WenDao.IngestionOutcomeDoer_ElixirHeal">
+          <cultivatorsOnly>false</cultivatorsOnly>
+          <healAmount>20</healAmount>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>2002</listOrder>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="WenDao.ElixirExtension">
+        <toxicity>0.1</toxicity>
+        <explodeChance>0</explodeChance>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="WD_ElixirBase">
+    <defName>WD_FoundationPill</defName>
+    <label>foundation pill</label>
+    <description>Raises the chance of the next breakthrough from Qi Refining to Foundation Establishment. Used up by the attempt, and fades after a few days. Does not stack.</description>
+    <graphicData>
+      <texPath>Things/Item/Drug/Penoxycyline</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(1,0.85,0.4)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>250</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="WenDao.IngestionOutcomeDoer_ElixirBreakthrough">
+          <hediff>WD_FoundationAid</hediff>
+          <bonus>0.2</bonus>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>2003</listOrder>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="WenDao.ElixirExtension">
+        <toxicity>0.2</toxicity>
+        <explodeChance>0.25</explodeChance>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="WD_ElixirBase">
+    <defName>WD_LongevityPill</defName>
+    <label>longevity pill</label>
+    <description>Adds years of lifespan to a cultivator. Each further pill does less.</description>
+    <graphicData>
+      <texPath>Things/Item/Drug/Penoxycyline</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(1,0.6,0.7)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>600</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="WenDao.IngestionOutcomeDoer_ElixirLongevity">
+          <years>15</years>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>2004</listOrder>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="WenDao.ElixirExtension">
+        <toxicity>0.25</toxicity>
+        <explodeChance>0.35</explodeChance>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <RecipeDef>
+    <defName>WD_Make_QiGatheringPill</defName>
+    <label>refine qi-gathering pill x2</label>
+    <description>Refine qi-gathering pill.</description>
+    <jobString>Refining qi-gathering pill.</jobString>
+    <workAmount>1200</workAmount>
+    <workSkill>Medicine</workSkill>
+    <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <recipeUsers>
+      <li>WD_AlchemyFurnace</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WD_SpiritHerb</li>
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>WD_SpiritHerb</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <WD_QiGatheringPill>2</WD_QiGatheringPill>
+    </products>
+    <skillRequirements>
+      <Medicine>3</Medicine>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>WD_Make_EssencePill</defName>
+    <label>refine essence-restoring pill x2</label>
+    <description>Refine essence-restoring pill.</description>
+    <jobString>Refining essence-restoring pill.</jobString>
+    <workAmount>1200</workAmount>
+    <workSkill>Medicine</workSkill>
+    <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <recipeUsers>
+      <li>WD_AlchemyFurnace</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WD_SpiritHerb</li>
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>WD_SpiritHerb</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <WD_EssencePill>2</WD_EssencePill>
+    </products>
+    <skillRequirements>
+      <Medicine>3</Medicine>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>WD_Make_HealingPill</defName>
+    <label>refine healing pill x2</label>
+    <description>Refine healing pill.</description>
+    <jobString>Refining healing pill.</jobString>
+    <workAmount>1200</workAmount>
+    <workSkill>Medicine</workSkill>
+    <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <recipeUsers>
+      <li>WD_AlchemyFurnace</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WD_SpiritHerb</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineHerbal</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>WD_SpiritHerb</li>
+        <li>MedicineHerbal</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <WD_HealingPill>2</WD_HealingPill>
+    </products>
+    <skillRequirements>
+      <Medicine>4</Medicine>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>WD_Make_FoundationPill</defName>
+    <label>refine foundation pill</label>
+    <description>Refine foundation pill.</description>
+    <jobString>Refining foundation pill.</jobString>
+    <workAmount>3600</workAmount>
+    <workSkill>Medicine</workSkill>
+    <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <recipeUsers>
+      <li>WD_AlchemyFurnace</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WD_SpiritHerb</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WD_Lingzhi</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>WD_SpiritHerb</li>
+        <li>WD_Lingzhi</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <WD_FoundationPill>1</WD_FoundationPill>
+    </products>
+    <skillRequirements>
+      <Medicine>6</Medicine>
+      <Intellectual>4</Intellectual>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>WD_Make_LongevityPill</defName>
+    <label>refine longevity pill</label>
+    <description>Refine longevity pill.</description>
+    <jobString>Refining longevity pill.</jobString>
+    <workAmount>6000</workAmount>
+    <workSkill>Medicine</workSkill>
+    <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <recipeUsers>
+      <li>WD_AlchemyFurnace</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WD_SpiritHerb</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WD_Lingzhi</li>
+          </thingDefs>
+        </filter>
+        <count>8</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>WD_SpiritHerb</li>
+        <li>WD_Lingzhi</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <WD_LongevityPill>1</WD_LongevityPill>
+    </products>
+    <skillRequirements>
+      <Medicine>9</Medicine>
+      <Intellectual>7</Intellectual>
+    </skillRequirements>
+  </RecipeDef>
+
+  <!-- ===== Hediff ===== -->
+  <HediffDef>
+    <defName>WD_QiGathering</defName>
+    <label>qi gathering</label>
+    <description>An elixir draws spirit qi into the meridians, speeding up cultivation.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.85, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <WD_CultivationSpeed>1.3</WD_CultivationSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>WD_FoundationAid</defName>
+    <label>foundation pill</label>
+    <description>The power of a foundation pill lingers, raising the chance of breaking through to Foundation Establishment. It is used up by the attempt.</description>
+    <hediffClass>WenDao.Hediff_BreakthroughAid</hediffClass>
+    <defaultLabelColor>(1.0, 0.85, 0.4)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="WenDao.BreakthroughAidExtension">
+        <realm>WD_QiRefining</realm>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <!-- 丹毒：每顆丹藥累積，緩慢消退 -->
+  <HediffDef>
+    <defName>WD_PillToxicity</defName>
+    <label>pill toxicity</label>
+    <description>Impurities from elixirs building up in the meridians. Clears slowly. Too much slows cultivation and damages the body.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.8, 0.3)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>0.001</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.05</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>trace</label>
+      </li>
+      <li>
+        <minSeverity>0.35</minSeverity>
+        <label>mild</label>
+        <statFactors>
+          <WD_CultivationSpeed>0.8</WD_CultivationSpeed>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <label>heavy</label>
+        <statFactors>
+          <WD_CultivationSpeed>0.5</WD_CultivationSpeed>
+        </statFactors>
+        <capMods>
+          <li>
+            <capacity>BloodFiltration</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.85</minSeverity>
+        <label>meridian damage</label>
+        <painOffset>0.15</painOffset>
+        <statFactors>
+          <WD_CultivationSpeed>0.2</WD_CultivationSpeed>
+        </statFactors>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>BloodFiltration</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

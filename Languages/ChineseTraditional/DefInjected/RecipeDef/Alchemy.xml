@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_Make_QiGatheringPill.label>煉製聚氣丹 x2</WD_Make_QiGatheringPill.label>
+  <WD_Make_QiGatheringPill.description>煉製聚氣丹。</WD_Make_QiGatheringPill.description>
+  <WD_Make_QiGatheringPill.jobString>正在煉製聚氣丹。</WD_Make_QiGatheringPill.jobString>
+  <WD_Make_EssencePill.label>煉製回元丹 x2</WD_Make_EssencePill.label>
+  <WD_Make_EssencePill.description>煉製回元丹。</WD_Make_EssencePill.description>
+  <WD_Make_EssencePill.jobString>正在煉製回元丹。</WD_Make_EssencePill.jobString>
+  <WD_Make_HealingPill.label>煉製療傷丹 x2</WD_Make_HealingPill.label>
+  <WD_Make_HealingPill.description>煉製療傷丹。</WD_Make_HealingPill.description>
+  <WD_Make_HealingPill.jobString>正在煉製療傷丹。</WD_Make_HealingPill.jobString>
+  <WD_Make_FoundationPill.label>煉製築基丹</WD_Make_FoundationPill.label>
+  <WD_Make_FoundationPill.description>煉製築基丹。</WD_Make_FoundationPill.description>
+  <WD_Make_FoundationPill.jobString>正在煉製築基丹。</WD_Make_FoundationPill.jobString>
+  <WD_Make_LongevityPill.label>煉製延壽丹</WD_Make_LongevityPill.label>
+  <WD_Make_LongevityPill.description>煉製延壽丹。</WD_Make_LongevityPill.description>
+  <WD_Make_LongevityPill.jobString>正在煉製延壽丹。</WD_Make_LongevityPill.jobString>
+</LanguageData>

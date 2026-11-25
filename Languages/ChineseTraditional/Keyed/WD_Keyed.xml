@@ -69,4 +69,12 @@
   <WD_SpellPower>威力：{0}</WD_SpellPower>
   <WD_SpellAutoCast>非徵召時受傷會自動施放。</WD_SpellAutoCast>
   <WD_NothingToHeal>{0} 沒有可治癒的新傷。</WD_NothingToHeal>
+
+  <!-- 煉丹 -->
+  <WD_FurnaceExploded>{0} 煉製{1}時炸爐！</WD_FurnaceExploded>
+  <WD_OnlyCultivators>只有修士能煉丹</WD_OnlyCultivators>
+  <WD_ElixirWastedMortal>{0} 並非修士，無法煉化{1}，藥力白白浪費。</WD_ElixirWastedMortal>
+  <WD_LifespanGained>{0} 增加 {1} 年壽元。</WD_LifespanGained>
+  <WD_PlantQi>靈氣濃度的影響：{0}</WD_PlantQi>
+  <WD_PlantNeedsQi>靈氣不足，停止生長（需達 {0}）</WD_PlantNeedsQi>
 </LanguageData>
