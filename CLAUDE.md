@@ -44,7 +44,7 @@ docs/DESIGN.md
 - Harmony：Workshop 2009463077（已訂閱）。
 - 日誌：`%USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Player.log`（上一次為 `Player-prev.log`）。
 - .NET SDK 11 已安裝；目標框架仍為 `net472`（靠 Krafs 參考組件，不需要 .NET Framework targeting pack）。
-- 反編譯查原版寫法：本機未裝 ilspycmd；可在 pwsh 用 `Add-Type` 載入 VS Code C# 擴充的 `.roslyn/ICSharpCode.Decompiler.dll`，以 `CSharpDecompiler` 讀 `RimWorldWin64_DataManagedAssembly-CSharp.dll`。
+- 反編譯查原版寫法：本機未裝 ilspycmd；可在 pwsh 用 `Add-Type` 載入 VS Code C# 擴充的 `.roslyn/ICSharpCode.Decompiler.dll`，以 `CSharpDecompiler` 讀 `RimWorldWin64_Data\Managed\Assembly-CSharp.dll`。
 
 ## 工作流程
 
