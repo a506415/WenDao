@@ -33,15 +33,22 @@ namespace WenDao
         }
 
         /// <summary>
-        /// 成功率 = 基礎 × 強行係數 + 護法加成，夾在範圍內。
+        /// 成功率 = 基礎 × 強行係數 × 天資極限係數 + 護法加成，夾在範圍內。
         /// 感悟圓滿時強行係數為 1；否則 Lerp(forcedChanceMin, 1, 感悟比例)。
         /// </summary>
         public static float SuccessChance(Hediff_Cultivation c, float guardedFraction)
         {
             WenDaoTuningDef t = WenDaoTuningDef.Get;
             float forcedFactor = c.InsightFull ? 1f : Mathf.Lerp(t.forcedChanceMin, 1f, c.InsightPct);
-            float chance = c.realm.breakthroughChance * forcedFactor + t.guardBonus * Mathf.Clamp01(guardedFraction) + AidBonus(c);
+            float chance = c.realm.breakthroughChance * forcedFactor * RootCapFactor(c) + t.guardBonus * Mathf.Clamp01(guardedFraction) + AidBonus(c);
             return Mathf.Clamp(chance, t.breakthroughChanceRange.min, t.breakthroughChanceRange.max);
+        }
+
+        /// <summary>偽靈根等突破天資極限時的成功率倍率。</summary>
+        public static float RootCapFactor(Hediff_Cultivation c)
+        {
+            CultivationRealmDef cap = c.pawn.GetSpiritRoot()?.grade?.naturalRealmCap;
+            return cap != null && c.realm.order >= cap.order ? WenDaoTuningDef.Get.beyondCapChanceFactor : 1f;
         }
 
         /// <summary>築基丹等突破輔助的加成。</summary>

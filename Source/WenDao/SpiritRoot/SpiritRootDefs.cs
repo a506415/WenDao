@@ -18,6 +18,8 @@ namespace WenDao
         public int elementCount;
         public bool mutant;
         public bool canCultivate = true;
+        /// <summary>天資極限；突破出此境界（含以上）時成功率大減。null 為無限制。</summary>
+        public CultivationRealmDef naturalRealmCap;
         public FloatRange cultivationSpeed = FloatRange.Zero;
 
         public override System.Collections.Generic.IEnumerable<string> ConfigErrors()
@@ -53,6 +55,7 @@ namespace WenDao
         public static JobDef WD_EndureTribulation;
         public static HediffDef WD_BloodBurning;
         public static HediffDef WD_PillToxicity;
+        public static WorkTypeDef WD_Alchemy;
         public static DamageDef WD_TribulationLightning;
 
         static WD_DefOf()

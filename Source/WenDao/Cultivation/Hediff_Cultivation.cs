@@ -86,6 +86,13 @@ namespace WenDao
             if (realm == null)
                 realm = CultivationRealmDef.First;
             SpellUtility.SyncSpells(pawn, false);
+            pawn.Notify_DisabledWorkTypesChanged(); // 成為修士後可煉丹
+        }
+
+        public override void PostRemoved()
+        {
+            base.PostRemoved();
+            pawn.Notify_DisabledWorkTypesChanged();
         }
 
         private const int AutoDefendInterval = 30;

@@ -40,9 +40,13 @@ namespace WenDao
         public override string GetInspectString()
         {
             string s = base.GetInspectString();
-            if (!Spawned || QiFactor > 0f)
+            if (!Spawned)
                 return s;
-            return s + "\n" + "WD_PlantNeedsQi".Translate(def.GetModExtension<SpiritPlantExtension>().minQi.ToString("0.00"));
+            float qi = MapComponent_SpiritQi.For(Map)?.QiAt(Position) ?? 0f;
+            string line = QiFactor > 0f
+                ? "WD_PlantQiInspect".Translate(qi.ToString("0.00"), QiFactor.ToStringPercent())
+                : "WD_PlantNeedsQi".Translate(qi.ToString("0.00"), (def.GetModExtension<SpiritPlantExtension>()?.minQi ?? 0f).ToString("0.00"));
+            return s.NullOrEmpty() ? line : s + "\n" + line;
         }
     }
 }

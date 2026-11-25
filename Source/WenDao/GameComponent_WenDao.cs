@@ -24,7 +24,12 @@ namespace WenDao
                 }
                 // 舊存檔的修士補上已達境界的法術。
                 if (!pawn.Dead)
+                {
                     SpellUtility.SyncSpells(pawn, false);
+                    // 清除舊存檔中凡人已指派的煉丹。
+                    if (pawn.Faction?.IsPlayer == true && pawn.workSettings?.EverWork == true)
+                        pawn.Notify_DisabledWorkTypesChanged();
+                }
             }
             if (given > 0)
                 Log.Message("[WenDao] Gave spirit roots to " + given + " existing pawns.");

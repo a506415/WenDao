@@ -700,6 +700,9 @@
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-0.05</severityPerDay>
       </li>
+      <li>
+        <compClass>WenDao.HediffComp_ShowSeverity</compClass>
+      </li>
     </comps>
     <stages>
       <li>

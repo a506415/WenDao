@@ -31,6 +31,8 @@
     <forcedChanceMin>0.3</forcedChanceMin>
     <forcedLifespanCapFraction>0.1</forcedLifespanCapFraction>
     <guardBonus>0.15</guardBonus>
+    <!-- 偽靈根突破天資極限（naturalRealmCap）時，基礎成功率乘以此值；0.75 × 0.13 ≈ 10%。丹藥與護法加成不受影響。 -->
+    <beyondCapChanceFactor>0.13</beyondCapChanceFactor>
     <guardRadius>3.9</guardRadius>
     <breakthroughChanceRange>0.02~0.95</breakthroughChanceRange>
 

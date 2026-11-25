@@ -76,5 +76,9 @@
   <WD_ElixirWastedMortal>{0} 並非修士，無法煉化{1}，藥力白白浪費。</WD_ElixirWastedMortal>
   <WD_LifespanGained>{0} 增加 {1} 年壽元。</WD_LifespanGained>
   <WD_PlantQi>靈氣濃度的影響：{0}</WD_PlantQi>
-  <WD_PlantNeedsQi>靈氣不足，停止生長（需達 {0}）</WD_PlantNeedsQi>
+  <WD_PlantNeedsQi>靈氣濃度：{0}，不足而停止生長（需達 {1}）</WD_PlantNeedsQi>
+  <WD_PlantQiInspect>靈氣濃度：{0}（生長速度 ×{1}）</WD_PlantQiInspect>
+  <WD_FurnaceNotOwned>丹爐不屬於殖民地</WD_FurnaceNotOwned>
+  <WD_FurnaceNoFuel>丹爐沒有燃料，也無法補充</WD_FurnaceNoFuel>
+  <WD_RootCap>天資極限：{0}（突破此境界時，基礎成功率 ×{1}，需仰賴丹藥）</WD_RootCap>
 </LanguageData>

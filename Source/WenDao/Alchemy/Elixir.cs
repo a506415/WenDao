@@ -86,6 +86,19 @@ namespace WenDao
                 Verse.AI.JobFailReason.Is("WD_OnlyCultivators".Translate());
                 return null;
             }
+            // 原版對以下兩種情況只默默不給選項，這裡補上原因。
+            if (thing.Faction != pawn.Faction)
+            {
+                Verse.AI.JobFailReason.Is("WD_FurnaceNotOwned".Translate());
+                return null;
+            }
+            CompRefuelable fuel = thing.TryGetComp<CompRefuelable>();
+            if (fuel != null && !fuel.HasFuel && !RefuelWorkGiverUtility.CanRefuel(pawn, thing, forced))
+            {
+                if (!Verse.AI.JobFailReason.HaveReason)
+                    Verse.AI.JobFailReason.Is("WD_FurnaceNoFuel".Translate());
+                return null;
+            }
             return base.JobOnThing(pawn, thing, forced);
         }
     }

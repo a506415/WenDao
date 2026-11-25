@@ -76,5 +76,9 @@
   <WD_ElixirWastedMortal>{0} is not a cultivator and cannot absorb the {1}. It was wasted.</WD_ElixirWastedMortal>
   <WD_LifespanGained>{0} gained {1} years of lifespan.</WD_LifespanGained>
   <WD_PlantQi>Multiplier for spirit qi: {0}</WD_PlantQi>
-  <WD_PlantNeedsQi>Not growing: spirit qi too thin (needs {0})</WD_PlantNeedsQi>
+  <WD_PlantNeedsQi>Spirit qi: {0}, too thin to grow (needs {1})</WD_PlantNeedsQi>
+  <WD_PlantQiInspect>Spirit qi: {0} (growth x{1})</WD_PlantQiInspect>
+  <WD_FurnaceNotOwned>Furnace does not belong to the colony</WD_FurnaceNotOwned>
+  <WD_FurnaceNoFuel>Furnace has no fuel and cannot be refuelled</WD_FurnaceNoFuel>
+  <WD_RootCap>Natural limit: {0} (base breakthrough chance x{1} beyond it; elixirs needed)</WD_RootCap>
 </LanguageData>
