@@ -57,4 +57,16 @@
   <WD_LetterTribulationLabel>Heavenly tribulation: {0}</WD_LetterTribulationLabel>
   <WD_LetterTribulation>{0}'s breakthrough has drawn heaven's tribulation! In about {3} hours, {2} bolts of lightning will strike {0} one after another. Survive them to enter {1}.\n\n{0} will hold their ground, and the lightning ignores armor. The strikes also hit the area around them. Everyone else should stay well away. If {0} leaves before the tribulation ends, the breakthrough fails.</WD_LetterTribulation>
   <WD_TribulationProgress>Strikes: {0} / {1}</WD_TribulationProgress>
+
+  <!-- 法術 -->
+  <WD_SpellLearned>{0} learned a spell: {1}.</WD_SpellLearned>
+  <WD_NotEnoughZhenyuan>Not enough true essence ({0} needed)</WD_NotEnoughZhenyuan>
+  <WD_NotEnoughLifespan>Not enough lifespan left (more than {0} years needed)</WD_NotEnoughLifespan>
+  <WD_ConfirmLifespanSpell>{0} will use {1}, losing {2} years of lifespan ({3} years left).\n\nContinue?</WD_ConfirmLifespanSpell>
+  <WD_SpellCost>True essence cost: {0}</WD_SpellCost>
+  <WD_SpellLifespanCost>Lifespan cost: {0} years</WD_SpellLifespanCost>
+  <WD_SpellElements>Element: {0} (stronger if it matches the spirit root, more so for purer roots)</WD_SpellElements>
+  <WD_SpellPower>Power: {0}</WD_SpellPower>
+  <WD_SpellAutoCast>Cast automatically when hurt while not drafted.</WD_SpellAutoCast>
+  <WD_NothingToHeal>{0} has no fresh wounds to heal.</WD_NothingToHeal>
 </LanguageData>

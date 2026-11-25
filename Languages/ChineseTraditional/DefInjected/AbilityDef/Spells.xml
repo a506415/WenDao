@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_SwiftWind.label>疾風步</WD_SwiftWind.label>
+  <WD_SwiftWind.description>御風而行。短時間內大幅提高移動速度與近戰閃避。</WD_SwiftWind.description>
+  <WD_Fireball.label>火球術</WD_Fireball.label>
+  <WD_Fireball.description>擲出火球，命中時爆炸，灼燒周圍一切並可能引火。</WD_Fireball.description>
+  <WD_GoldenShield.label>金光罩</WD_GoldenShield.label>
+  <WD_GoldenShield.description>以金光護身，短時間內大幅減輕所受的一切傷害。非徵召時，受傷後會自動施放。</WD_GoldenShield.description>
+  <WD_Heal.label>治癒術</WD_Heal.label>
+  <WD_Heal.description>以真元癒合新傷，優先處理流血最嚴重的傷口。無法消除疤痕或治療疾病。</WD_Heal.description>
+  <WD_BloodBurning_Spell.label>燃血秘術</WD_BloodBurning_Spell.label>
+  <WD_BloodBurning_Spell.description>禁術：燃燒壽元，立即回滿真元，並在一段時間內爆發出遠超極限的戰力。</WD_BloodBurning_Spell.description>
+  <WD_FlyingSword.label>御劍</WD_FlyingSword.label>
+  <WD_FlyingSword.description>以真元凝劍，飛斬單一目標，破甲力強。</WD_FlyingSword.description>
+</LanguageData>

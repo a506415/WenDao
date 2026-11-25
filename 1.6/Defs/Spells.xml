@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===== 法術 =====
+       真元消耗、領悟境界（unlockStage 從 1 起算）、屬性都在 CompProperties_Spell。
+       威力 = 境界 spellPower × 屬性相合 × 燃血；影響傷害、治療量與增益持續時間。
+       圖示為原版貼圖佔位。 -->
+
+  <JobDef>
+    <defName>WD_CastSpell</defName>
+    <driverClass>JobDriver_CastAbility</driverClass>
+    <reportString>casting a spell.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <collideWithPawns>true</collideWithPawns>
+  </JobDef>
+
+  <AbilityDef Name="WD_SpellBase" Abstract="True">
+    <jobDef>WD_CastSpell</jobDef>
+    <showPsycastEffects>false</showPsycastEffects>
+    <aiCanUse>false</aiCanUse>
+  </AbilityDef>
+
+  <AbilityDef ParentName="WD_SpellBase">
+    <defName>WD_SwiftWind</defName>
+    <label>Swift Wind Step</label>
+    <description>Ride the wind. Greatly increases movement speed and melee dodging for a short time.</description>
+    <iconPath>Things/Mote/DustPuff</iconPath>
+    <displayOrder>1</displayOrder>
+    <cooldownTicksRange>2700</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>0</warmupTime>
+      <drawAimPie>false</drawAimPie>
+      <violent>false</violent>
+      <targetable>false</targetable>
+      <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WenDao.CompProperties_Spell">
+        <zhenyuanCost>3</zhenyuanCost>
+        <unlockRealm>WD_QiRefining</unlockRealm>
+        <unlockStage>2</unlockStage>
+        <elements>
+          <li>WD_Wind</li>
+          <li>WD_Wood</li>
+        </elements>
+      </li>
+      <li Class="WenDao.CompProperties_SpellSelfHediff">
+        <hediff>WD_SwiftWindBuff</hediff>
+        <durationTicks>1200</durationTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="WD_SpellBase">
+    <defName>WD_Fireball</defName>
+    <label>Fireball</label>
+    <description>Hurl a ball of fire that explodes on impact, burning everything nearby and starting fires.</description>
+    <iconPath>Things/Mote/BlastFlame</iconPath>
+    <displayOrder>2</displayOrder>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>24.9</range>
+      <warmupTime>1.2</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WenDao.CompProperties_Spell">
+        <zhenyuanCost>4</zhenyuanCost>
+        <unlockRealm>WD_QiRefining</unlockRealm>
+        <unlockStage>3</unlockStage>
+        <elements>
+          <li>WD_Fire</li>
+        </elements>
+      </li>
+      <li Class="WenDao.CompProperties_SpellProjectile">
+        <projectileDef>WD_Projectile_Fireball</projectileDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="WD_SpellBase">
+    <defName>WD_GoldenShield</defName>
+    <label>Golden Light Shield</label>
+    <description>Wrap yourself in golden light that blunts all incoming harm for a short time. When not drafted, it is cast automatically after being hurt.</description>
+    <iconPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</iconPath>
+    <displayOrder>3</displayOrder>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>0</warmupTime>
+      <drawAimPie>false</drawAimPie>
+      <violent>false</violent>
+      <targetable>false</targetable>
+      <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WenDao.CompProperties_Spell">
+        <zhenyuanCost>5</zhenyuanCost>
+        <unlockRealm>WD_QiRefining</unlockRealm>
+        <unlockStage>5</unlockStage>
+        <elements>
+          <li>WD_Metal</li>
+          <li>WD_Earth</li>
+        </elements>
+        <autoCastDefensive>true</autoCastDefensive>
+      </li>
+      <li Class="WenDao.CompProperties_SpellSelfHediff">
+        <hediff>WD_GoldenShieldBuff</hediff>
+        <durationTicks>1200</durationTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="WD_SpellBase">
+    <defName>WD_Heal</defName>
+    <label>Healing Art</label>
+    <description>Channel true essence to close fresh wounds, worst bleeding first. Cannot remove scars or cure disease.</description>
+    <iconPath>Things/Mote/HealingCross</iconPath>
+    <displayOrder>4</displayOrder>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>6.9</range>
+      <warmupTime>2</warmupTime>
+      <violent>false</violent>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WenDao.CompProperties_Spell">
+        <zhenyuanCost>6</zhenyuanCost>
+        <unlockRealm>WD_QiRefining</unlockRealm>
+        <unlockStage>7</unlockStage>
+        <elements>
+          <li>WD_Wood</li>
+          <li>WD_Water</li>
+        </elements>
+      </li>
+      <li Class="WenDao.CompProperties_SpellHeal">
+        <healAmount>12</healAmount>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="WD_SpellBase">
+    <defName>WD_BloodBurning_Spell</defName>
+    <label>Blood Burning Art</label>
+    <description>A forbidden art: burn away years of life to refill true essence at once and fight far beyond your limits for a while.</description>
+    <iconPath>Things/Mote/BloodSplash</iconPath>
+    <displayOrder>6</displayOrder>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>1</warmupTime>
+      <drawAimPie>false</drawAimPie>
+      <violent>false</violent>
+      <targetable>false</targetable>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WenDao.CompProperties_Spell">
+        <zhenyuanCost>0</zhenyuanCost>
+        <lifespanCost>5</lifespanCost>
+        <unlockRealm>WD_QiRefining</unlockRealm>
+        <unlockStage>9</unlockStage>
+      </li>
+      <li Class="WenDao.CompProperties_SpellRefillZhenyuan" />
+      <li Class="WenDao.CompProperties_SpellSelfHediff">
+        <hediff>WD_BloodBurning</hediff>
+        <durationTicks>5000</durationTicks>
+        <durationScales>false</durationScales>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="WD_SpellBase">
+    <defName>WD_FlyingSword</defName>
+    <label>Sword Control</label>
+    <description>Send a sword of condensed essence flying at a single target. It pierces armor well.</description>
+    <iconPath>Things/Item/Equipment/WeaponMelee/LongSword</iconPath>
+    <displayOrder>5</displayOrder>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>29.9</range>
+      <warmupTime>0.8</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WenDao.CompProperties_Spell">
+        <zhenyuanCost>8</zhenyuanCost>
+        <unlockRealm>WD_FoundationEstablishment</unlockRealm>
+        <unlockStage>1</unlockStage>
+        <elements>
+          <li>WD_Metal</li>
+          <li>WD_Thunder</li>
+        </elements>
+      </li>
+      <li Class="WenDao.CompProperties_SpellProjectile">
+        <projectileDef>WD_Projectile_FlyingSword</projectileDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <HediffDef>
+    <defName>WD_SwiftWindBuff</defName>
+    <label>swift wind</label>
+    <description>Carried along by the wind.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.7, 1.0, 0.8)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>1.5</MoveSpeed>
+        </statFactors>
+        <statOffsets>
+          <MeleeDodgeChance>8</MeleeDodgeChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>WD_GoldenShieldBuff</defName>
+    <label>golden light shield</label>
+    <description>Golden light blunts incoming harm.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1.0, 0.85, 0.3)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>0.4</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>WD_BloodBurning</defName>
+    <label>burning blood</label>
+    <description>Life itself is being burned for power.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.9, 0.2, 0.2)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painFactor>0.3</painFactor>
+        <statFactors>
+          <MoveSpeed>1.25</MoveSpeed>
+          <MeleeDamageFactor>1.5</MeleeDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>WD_Projectile_Fireball</defName>
+    <label>fireball</label>
+    <graphicData>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,120,40)</color>
+      <drawSize>1.6</drawSize>
+    </graphicData>
+    <thingClass>WenDao.Projectile_SpellExplosive</thingClass>
+    <projectile>
+      <speed>30</speed>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <explosionRadius>1.9</explosionRadius>
+      <explosionChanceToStartFire>0.3</explosionChanceToStartFire>
+      <soundExplode>MortarIncendiary_Explode</soundExplode>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>WD_Projectile_FlyingSword</defName>
+    <label>flying sword</label>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/LongSword</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(180,220,255)</color>
+    </graphicData>
+    <thingClass>WenDao.Projectile_SpellBullet</thingClass>
+    <projectile>
+      <speed>70</speed>
+      <damageDef>Cut</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+    </projectile>
+  </ThingDef>
+
+</Defs>

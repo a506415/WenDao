@@ -57,4 +57,16 @@
   <WD_LetterTribulationLabel>天劫降臨：{0}</WD_LetterTribulationLabel>
   <WD_LetterTribulation>{0} 突破在即，引動天劫！約 {3} 小時後，{2} 道天雷將接連劈向{0}，撐過便踏入{1}。\n\n{0}會原地硬撐，天雷無視護甲。落雷會波及周圍數格——其他人應盡快遠離。若{0}在天劫結束前離開此地，突破即告失敗。</WD_LetterTribulation>
   <WD_TribulationProgress>已落雷：{0} / {1}</WD_TribulationProgress>
+
+  <!-- 法術 -->
+  <WD_SpellLearned>{0} 領悟了法術：{1}。</WD_SpellLearned>
+  <WD_NotEnoughZhenyuan>真元不足（需要 {0}）</WD_NotEnoughZhenyuan>
+  <WD_NotEnoughLifespan>剩餘壽元不足（需要超過 {0} 年）</WD_NotEnoughLifespan>
+  <WD_ConfirmLifespanSpell>{0} 將施展{1}，折損 {2} 年壽元（目前剩餘 {3} 年）。\n\n確定要施展嗎？</WD_ConfirmLifespanSpell>
+  <WD_SpellCost>真元消耗：{0}</WD_SpellCost>
+  <WD_SpellLifespanCost>折壽：{0} 年</WD_SpellLifespanCost>
+  <WD_SpellElements>屬性：{0}（與靈根相合則威力提高，靈根越純加成越大）</WD_SpellElements>
+  <WD_SpellPower>威力：{0}</WD_SpellPower>
+  <WD_SpellAutoCast>非徵召時受傷會自動施放。</WD_SpellAutoCast>
+  <WD_NothingToHeal>{0} 沒有可治癒的新傷。</WD_NothingToHeal>
 </LanguageData>

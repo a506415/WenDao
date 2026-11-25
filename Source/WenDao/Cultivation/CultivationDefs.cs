@@ -34,6 +34,10 @@ namespace WenDao
 
         public float lifespanWarningYears = 15f;
 
+        public float spellElementBonus = 0.5f;
+        public float bloodBurningSpellPower = 1.5f;
+        public int autoDefendWindowTicks = 120;
+
         public static WenDaoTuningDef Get => WD_DefOf.WD_Tuning;
     }
 
@@ -55,6 +59,9 @@ namespace WenDao
 
         /// <summary>此境界的壽元上限（年）。</summary>
         public float lifespanYears = 100f;
+
+        /// <summary>法術威力的境界係數。</summary>
+        public float spellPower = 1f;
 
         // ---- 突破出此境界 ----
         public float insightRequired = 50f;

@@ -41,6 +41,11 @@
 
     <!-- 壽元：剩餘少於此年數時發警告信（應大於單次突破失敗的最大折壽，否則可能來不及警告） -->
     <lifespanWarningYears>15</lifespanWarningYears>
+
+    <!-- 法術：屬性相合加成 = spellElementBonus ÷ 靈根屬性數；燃血期間威力倍率；非徵召時受傷後多久內會自動防禦。 -->
+    <spellElementBonus>0.5</spellElementBonus>
+    <bloodBurningSpellPower>1.5</bloodBurningSpellPower>
+    <autoDefendWindowTicks>120</autoDefendWindowTicks>
   </WenDao.WenDaoTuningDef>
 
   <!-- ===== 境界 =====
@@ -93,6 +98,7 @@
     <label>Foundation Establishment</label>
     <order>2</order>
     <zhenyuanMax>60</zhenyuanMax>
+    <spellPower>1.5</spellPower>
     <lifespanYears>200</lifespanYears>
     <!-- 突破出此境界（→ 金丹） -->
     <insightRequired>250</insightRequired>
@@ -128,6 +134,7 @@
     <label>Golden Core</label>
     <order>3</order>
     <zhenyuanMax>150</zhenyuanMax>
+    <spellPower>2.2</spellPower>
     <lifespanYears>400</lifespanYears>
     <!-- 突破進此境界要渡天劫 -->
     <tribulationStrikes>9</tribulationStrikes>

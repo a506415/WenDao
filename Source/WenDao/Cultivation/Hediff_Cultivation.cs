@@ -83,14 +83,18 @@ namespace WenDao
             base.PostAdd(dinfo);
             if (realm == null)
                 realm = CultivationRealmDef.First;
+            SpellUtility.SyncSpells(pawn, false);
         }
 
+        private const int AutoDefendInterval = 30;
         private int ticksSinceLifespanCheck;
 
         // 1.6 的 hediff 以 TickInterval(delta) 批次推進。
         public override void TickInterval(int delta)
         {
             base.TickInterval(delta);
+            if (pawn.IsHashIntervalTick(AutoDefendInterval, delta))
+                SpellUtility.TryAutoDefend(pawn);
             ticksSinceLifespanCheck += delta;
             if (ticksSinceLifespanCheck >= LifespanCheckInterval)
             {
@@ -153,6 +157,7 @@ namespace WenDao
             if (realm == null || amount <= 0f || AtBottleneck)
                 return;
             progress += amount;
+            int oldStage = stage;
             while (progress >= StageCost && !IsLastStage)
             {
                 progress -= StageCost;
@@ -163,6 +168,8 @@ namespace WenDao
                         pawn, MessageTypeDefOf.PositiveEvent);
                 }
             }
+            if (stage != oldStage)
+                SpellUtility.SyncSpells(pawn, true);
             if (IsLastStage && progress >= StageCost)
             {
                 progress = StageCost;
@@ -198,6 +205,7 @@ namespace WenDao
             insight = 0f;
             lifespanWarned = false;
             pawn.health.Notify_HediffChanged(this);
+            SpellUtility.SyncSpells(pawn, true);
             return true;
         }
 

@@ -22,6 +22,9 @@ namespace WenDao
                     SpiritRootUtility.TryGiveOnGeneration(pawn);
                     given++;
                 }
+                // 舊存檔的修士補上已達境界的法術。
+                if (!pawn.Dead)
+                    SpellUtility.SyncSpells(pawn, false);
             }
             if (given > 0)
                 Log.Message("[WenDao] Gave spirit roots to " + given + " existing pawns.");

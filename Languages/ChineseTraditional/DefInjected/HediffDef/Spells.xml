@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_SwiftWindBuff.label>疾風</WD_SwiftWindBuff.label>
+  <WD_SwiftWindBuff.description>御風而行。</WD_SwiftWindBuff.description>
+  <WD_GoldenShieldBuff.label>金光罩</WD_GoldenShieldBuff.label>
+  <WD_GoldenShieldBuff.description>金光減輕所受傷害。</WD_GoldenShieldBuff.description>
+  <WD_BloodBurning.label>燃血</WD_BloodBurning.label>
+  <WD_BloodBurning.description>正在燃燒壽元換取力量。</WD_BloodBurning.description>
+</LanguageData>
