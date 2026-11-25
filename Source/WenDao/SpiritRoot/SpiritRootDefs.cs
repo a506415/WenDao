@@ -18,8 +18,8 @@ namespace WenDao
         public int elementCount;
         public bool mutant;
         public bool canCultivate = true;
-        /// <summary>天資極限；突破出此境界（含以上）時成功率大減。null 為無限制。</summary>
-        public CultivationRealmDef naturalRealmCap;
+        /// <summary>大境界突破的基礎成功率倍率；丹藥與護法加成不受影響。</summary>
+        public float breakthroughFactor = 1f;
         public FloatRange cultivationSpeed = FloatRange.Zero;
 
         public override System.Collections.Generic.IEnumerable<string> ConfigErrors()

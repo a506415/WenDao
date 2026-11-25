@@ -80,5 +80,6 @@
   <WD_PlantQiInspect>靈氣濃度：{0}（生長速度 ×{1}）</WD_PlantQiInspect>
   <WD_FurnaceNotOwned>丹爐不屬於殖民地</WD_FurnaceNotOwned>
   <WD_FurnaceNoFuel>丹爐沒有燃料，也無法補充</WD_FurnaceNoFuel>
-  <WD_RootCap>天資極限：{0}（突破此境界時，基礎成功率 ×{1}，需仰賴丹藥）</WD_RootCap>
+  <WD_RootBreakthrough>突破基礎成功率：×{0}（丹藥與護法加成不受影響）</WD_RootBreakthrough>
+  <WD_ElixirWeaker>{0} 體內藥力更強，這顆{1}未能生效。</WD_ElixirWeaker>
 </LanguageData>

@@ -63,7 +63,7 @@
 
   <WenDao.SpiritRootGradeDef>
     <defName>WD_FiveRoot</defName>
-    <naturalRealmCap>WD_QiRefining</naturalRealmCap>
+    <breakthroughFactor>0.1</breakthroughFactor>
     <label>five-element root</label>
     <description>A pseudo root: all five elements, none of them pure. Cultivation is slow; usually stalls at Foundation Establishment without elixirs.</description>
     <order>1</order>
@@ -74,7 +74,7 @@
 
   <WenDao.SpiritRootGradeDef>
     <defName>WD_FourRoot</defName>
-    <naturalRealmCap>WD_QiRefining</naturalRealmCap>
+    <breakthroughFactor>0.2</breakthroughFactor>
     <label>four-element root</label>
     <description>A pseudo root of four mixed elements. Cultivation is slow; usually stalls at Foundation Establishment without elixirs.</description>
     <order>2</order>

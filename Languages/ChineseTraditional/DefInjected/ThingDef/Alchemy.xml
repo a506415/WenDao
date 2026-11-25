@@ -11,7 +11,7 @@
   <WD_AlchemyFurnace.label>丹爐</WD_AlchemyFurnace.label>
   <WD_AlchemyFurnace.description>以木柴為火的煉丹爐，只有修士能掌控火候。煉製高階丹藥時有炸爐之虞。</WD_AlchemyFurnace.description>
   <WD_QiGatheringPill.label>聚氣丹</WD_QiGatheringPill.label>
-  <WD_QiGatheringPill.description>服下後約一日內修煉速度提高，品質越好持續越久。</WD_QiGatheringPill.description>
+  <WD_QiGatheringPill.description>服下後約一日內修煉速度提高，品質越好加成越高。</WD_QiGatheringPill.description>
   <WD_EssencePill.label>回元丹</WD_EssencePill.label>
   <WD_EssencePill.description>立即回復部分真元。</WD_EssencePill.description>
   <WD_HealingPill.label>療傷丹</WD_HealingPill.label>

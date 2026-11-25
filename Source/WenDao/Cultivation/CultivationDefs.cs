@@ -25,7 +25,6 @@ namespace WenDao
         public float forcedChanceMin = 0.3f;
         public float forcedLifespanCapFraction = 0.1f;
         public float guardBonus = 0.15f;
-        public float beyondCapChanceFactor = 0.13f;
         public float guardRadius = 3.9f;
         public FloatRange breakthroughChanceRange = new FloatRange(0.02f, 0.95f);
 

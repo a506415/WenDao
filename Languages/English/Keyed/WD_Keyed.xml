@@ -80,5 +80,6 @@
   <WD_PlantQiInspect>Spirit qi: {0} (growth x{1})</WD_PlantQiInspect>
   <WD_FurnaceNotOwned>Furnace does not belong to the colony</WD_FurnaceNotOwned>
   <WD_FurnaceNoFuel>Furnace has no fuel and cannot be refuelled</WD_FurnaceNoFuel>
-  <WD_RootCap>Natural limit: {0} (base breakthrough chance x{1} beyond it; elixirs needed)</WD_RootCap>
+  <WD_RootBreakthrough>Base breakthrough chance: x{0} (elixir and guard bonuses unaffected)</WD_RootBreakthrough>
+  <WD_ElixirWeaker>{0} is already under a stronger dose; the {1} had no effect.</WD_ElixirWeaker>
 </LanguageData>

@@ -48,9 +48,8 @@ namespace WenDao
                         sb.AppendLine("WD_CultivationSpeed".Translate(cultivationSpeed.ToStringPercent()));
                     else
                         sb.AppendLine("WD_CannotCultivate".Translate());
-                    if (grade.naturalRealmCap != null)
-                        sb.AppendLine("WD_RootCap".Translate(grade.naturalRealmCap.label,
-                            WenDaoTuningDef.Get.beyondCapChanceFactor.ToStringPercent()));
+                    if (grade.breakthroughFactor != 1f)
+                        sb.AppendLine("WD_RootBreakthrough".Translate(grade.breakthroughFactor.ToStringPercent()));
                 }
                 return sb.ToString().TrimEndNewlines();
             }

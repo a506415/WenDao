@@ -33,7 +33,7 @@ namespace WenDao
         }
     }
 
-    /// <summary>聚氣丹：限時 hediff，品質影響持續時間。</summary>
+    /// <summary>聚氣丹：限時 hediff，時長固定，嚴重度 = 品質倍率（由 multiplyStatChangesBySeverity 放大加成）。</summary>
     public class IngestionOutcomeDoer_ElixirHediff : IngestionOutcomeDoer_Elixir
     {
         public HediffDef hediff;
@@ -41,10 +41,19 @@ namespace WenDao
 
         protected override void Apply(Pawn pawn, Hediff_Cultivation c, Thing elixir, float factor)
         {
-            Hediff h = pawn.health.hediffSet.GetFirstHediffOfDef(hediff) ?? pawn.health.AddHediff(hediff);
+            Hediff h = pawn.health.hediffSet.GetFirstHediffOfDef(hediff);
+            // 藥力較弱的一顆不會蓋過、也不會延長較強的藥力。
+            if (h != null && h.Severity > factor + 0.001f)
+            {
+                Notify(pawn, "WD_ElixirWeaker".Translate(pawn.LabelShort, elixir.def.label));
+                return;
+            }
+            if (h == null)
+                h = pawn.health.AddHediff(hediff);
+            h.Severity = factor;
             HediffComp_Disappears d = h.TryGetComp<HediffComp_Disappears>();
             if (d != null)
-                d.ticksToDisappear = Mathf.RoundToInt(durationTicks * factor);
+                d.ticksToDisappear = durationTicks;
         }
     }
 
