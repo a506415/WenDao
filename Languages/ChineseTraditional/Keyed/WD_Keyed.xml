@@ -42,7 +42,7 @@
   <WD_StartSeclusion>閉關突破（成功率 {0}，閉關 {1} 天）</WD_StartSeclusion>
   <WD_StartForcedSeclusion>強行突破（感悟 {0}，成功率 {1}，閉關 {2} 天，成功亦折壽 {3} 年）</WD_StartForcedSeclusion>
   <WD_GuardSeclusion>為 {0} 護法（全程守護成功率 +{1}；餓了累了會自行離崗再回來）</WD_GuardSeclusion>
-  <WD_SeclusionReport>（成功率 {0}，其中護法 +{1}；護法在場 {2}）</WD_SeclusionReport>
+  <WD_SeclusionReport>（成功率 {0}，其中護法 +{1}；已守護全程的 {2}）</WD_SeclusionReport>
   <WD_LetterBreakthroughSuccessLabel>{0} 突破成功</WD_LetterBreakthroughSuccessLabel>
   <WD_LetterBreakthroughSuccess>{0} 衝破瓶頸，踏入{1}！</WD_LetterBreakthroughSuccess>
   <WD_LetterForcedCost>強行突破傷及根本，折損 {0} 年壽元。</WD_LetterForcedCost>

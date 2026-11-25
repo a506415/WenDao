@@ -22,7 +22,8 @@ namespace WenDao
 
         private Thing Cushion => job.GetTarget(TargetIndex.A).Thing;
 
-        public float GuardedFraction => elapsedTicks > 0 ? (float)guardedTicks / elapsedTicks : 0f;
+        /// <summary>已守護時間占閉關總時長的比例：過程中只升不降。</summary>
+        public float GuardedFraction => UnityEngine.Mathf.Clamp01((float)guardedTicks / (pawn.GetCultivation()?.realm.SeclusionTicks ?? GenDate.TicksPerDay));
 
         /// <summary>指派護法：離開吃飯睡覺後會自動回崗，直到閉關結束或被玩家改派。</summary>
         public void AssignGuard(Pawn guard)
@@ -90,7 +91,8 @@ namespace WenDao
             {
                 resolved = true;
                 BreakthroughUtility.RemoveSeclusionHediff(pawn);
-                BreakthroughUtility.ResolveSeclusion(pawn, GuardedFraction);
+                // 期滿以實際取樣數為分母，避免少一次取樣讓全程守護拿不滿加成。
+                BreakthroughUtility.ResolveSeclusion(pawn, elapsedTicks > 0 ? (float)guardedTicks / elapsedTicks : 0f);
             });
         }
 

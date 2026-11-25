@@ -42,7 +42,7 @@
   <WD_StartSeclusion>Enter seclusion to break through ({0} chance, {1} days)</WD_StartSeclusion>
   <WD_StartForcedSeclusion>Force a breakthrough (insight {0}, {1} chance, {2} days, costs {3} years even on success)</WD_StartForcedSeclusion>
   <WD_GuardSeclusion>Guard {0} in seclusion (+{1} chance if guarded throughout; leaves to eat and sleep, then returns)</WD_GuardSeclusion>
-  <WD_SeclusionReport>({0} chance, +{1} from guarding; guarded {2} of the time)</WD_SeclusionReport>
+  <WD_SeclusionReport>({0} chance, +{1} from guarding; {2} of the seclusion guarded)</WD_SeclusionReport>
   <WD_LetterBreakthroughSuccessLabel>{0} broke through</WD_LetterBreakthroughSuccessLabel>
   <WD_LetterBreakthroughSuccess>{0} shattered the bottleneck and entered {1}!</WD_LetterBreakthroughSuccess>
   <WD_LetterForcedCost>Forcing it damaged their foundation: {0} years of lifespan lost.</WD_LetterForcedCost>
