@@ -44,6 +44,22 @@ namespace WenDao
             return Mathf.Clamp(chance, t.breakthroughChanceRange.min, t.breakthroughChanceRange.max);
         }
 
+        /// <summary>護法實際帶來的成功率加成（已計入上下限）。</summary>
+        public static float GuardBonus(Hediff_Cultivation c, float guardedFraction)
+        {
+            return SuccessChance(c, guardedFraction) - SuccessChance(c, 0f);
+        }
+
+        /// <summary>若正在閉關，不反噬地結束它並回傳護法在場比例。</summary>
+        public static float EndSeclusionQuietly(Pawn pawn)
+        {
+            if (!(pawn.jobs?.curDriver is JobDriver_Seclusion driver))
+                return 0f;
+            float guarded = driver.GuardedFraction;
+            driver.EndWithoutBacklash();
+            return guarded;
+        }
+
         /// <summary>強行突破成功時要扣的壽元（年）。</summary>
         public static float ForcedLifespanCost(Hediff_Cultivation c)
         {
@@ -61,7 +77,7 @@ namespace WenDao
             float chance = SuccessChance(c, guardedFraction);
             if (!Rand.Chance(chance))
             {
-                Fail(pawn, "WD_FailReasonRoll".Translate(chance.ToStringPercent()));
+                Fail(pawn, "WD_FailReasonRoll".Translate(chance.ToStringPercent(), GuardBonus(c, guardedFraction).ToStringPercent()));
                 return;
             }
             CultivationRealmDef next = c.realm.Next;

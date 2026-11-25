@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <WD_TribulationLightning.label>天雷</WD_TribulationLightning.label>
+  <WD_TribulationLightning.deathMessage>{0} 死於天劫。</WD_TribulationLightning.deathMessage>
+</LanguageData>

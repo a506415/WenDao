@@ -41,20 +41,20 @@
   <!-- 突破 -->
   <WD_StartSeclusion>閉關突破（成功率 {0}，閉關 {1} 天）</WD_StartSeclusion>
   <WD_StartForcedSeclusion>強行突破（感悟 {0}，成功率 {1}，閉關 {2} 天，成功亦折壽 {3} 年）</WD_StartForcedSeclusion>
-  <WD_GuardSeclusion>為 {0} 護法</WD_GuardSeclusion>
-  <WD_SeclusionReport>（目前成功率 {0}）</WD_SeclusionReport>
+  <WD_GuardSeclusion>為 {0} 護法（全程守護成功率 +{1}；餓了累了會自行離崗再回來）</WD_GuardSeclusion>
+  <WD_SeclusionReport>（成功率 {0}，其中護法 +{1}；護法在場 {2}）</WD_SeclusionReport>
   <WD_LetterBreakthroughSuccessLabel>{0} 突破成功</WD_LetterBreakthroughSuccessLabel>
   <WD_LetterBreakthroughSuccess>{0} 衝破瓶頸，踏入{1}！</WD_LetterBreakthroughSuccess>
   <WD_LetterForcedCost>強行突破傷及根本，折損 {0} 年壽元。</WD_LetterForcedCost>
   <WD_LetterBreakthroughFailedLabel>{0} 突破失敗</WD_LetterBreakthroughFailedLabel>
   <WD_LetterBreakthroughFailed>{0} 衝擊{1}瓶頸失敗（{2}），靈力反噬，感悟盡失：</WD_LetterBreakthroughFailed>
   <WD_LetterLifespanLost>折壽 {0} 年</WD_LetterLifespanLost>
-  <WD_FailReasonRoll>成功率 {0}</WD_FailReasonRoll>
+  <WD_FailReasonRoll>成功率 {0}，其中護法 +{1}</WD_FailReasonRoll>
   <WD_FailReasonInterrupted>閉關被打斷</WD_FailReasonInterrupted>
   <WD_FailReasonFledTribulation>逃離天劫</WD_FailReasonFledTribulation>
 
   <!-- 天劫 -->
   <WD_LetterTribulationLabel>天劫降臨：{0}</WD_LetterTribulationLabel>
-  <WD_LetterTribulation>{0} 突破在即，引動天劫！約 {3} 小時後，{2} 道天雷將接連劈向{0}，撐過便踏入{1}。\n\n落雷會波及周圍數格並可能引火——其他人應盡快遠離。若{0}在天劫結束前離開此地，突破即告失敗。</WD_LetterTribulation>
+  <WD_LetterTribulation>{0} 突破在即，引動天劫！約 {3} 小時後，{2} 道天雷將接連劈向{0}，撐過便踏入{1}。\n\n{0}會原地硬撐，天雷無視護甲。落雷會波及周圍數格——其他人應盡快遠離。若{0}在天劫結束前離開此地，突破即告失敗。</WD_LetterTribulation>
   <WD_TribulationProgress>已落雷：{0} / {1}</WD_TribulationProgress>
 </LanguageData>

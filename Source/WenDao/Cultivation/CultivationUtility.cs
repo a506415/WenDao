@@ -90,13 +90,14 @@ namespace WenDao
             // 護法
             if (occupant != null && occupant != selPawn && occupant.CurJobDef == WD_DefOf.WD_Seclusion)
             {
-                string guardLabel = "WD_GuardSeclusion".Translate(occupant.LabelShort);
+                string guardLabel = "WD_GuardSeclusion".Translate(occupant.LabelShort, WenDaoTuningDef.Get.guardBonus.ToStringPercent());
                 if (!selPawn.CanReach(occupant, PathEndMode.Touch, Danger.Deadly))
                     yield return new FloatMenuOption(guardLabel + " (" + "NoPath".Translate() + ")", null);
                 else
                     yield return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(guardLabel, () =>
                     {
-                        selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(WD_DefOf.WD_GuardSeclusion, occupant), JobTag.Misc);
+                        if (selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(WD_DefOf.WD_GuardSeclusion, occupant), JobTag.Misc))
+                            (occupant.jobs.curDriver as JobDriver_Seclusion)?.AssignGuard(selPawn);
                     }), selPawn, occupant);
                 yield break;
             }

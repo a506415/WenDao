@@ -57,11 +57,19 @@ namespace WenDao
             p.GetCultivation()?.LoseLifespan(10f);
         }
 
+        [DebugAction("WenDao", "Set lifespan to 10 years left", actionType = DebugActionType.ToolMapForPawns,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void SetLifespanLeft(Pawn p)
+        {
+            Hediff_Cultivation c = p.GetCultivation();
+            c?.LoseLifespan(c.LifespanRemainingYears - 10f);
+        }
+
         [DebugAction("WenDao", "Resolve breakthrough now", actionType = DebugActionType.ToolMapForPawns,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         private static void ResolveBreakthroughNow(Pawn p)
         {
-            BreakthroughUtility.ResolveSeclusion(p, 0f);
+            BreakthroughUtility.ResolveSeclusion(p, BreakthroughUtility.EndSeclusionQuietly(p));
         }
 
         [DebugAction("WenDao", "Start tribulation (skip roll)", actionType = DebugActionType.ToolMapForPawns,
@@ -70,10 +78,13 @@ namespace WenDao
         {
             Hediff_Cultivation c = p.GetCultivation();
             CultivationRealmDef next = c?.realm.Next;
-            if (next != null && next.HasTribulation && p.Spawned)
+            if (next != null && next.HasTribulation && p.Spawned && BreakthroughUtility.ActiveTribulationFor(p) == null)
+            {
+                BreakthroughUtility.EndSeclusionQuietly(p);
                 GameCondition_HeavenlyTribulation.Start(p, next, false);
+            }
             else
-                Messages.Message("Next realm has no tribulation.", RimWorld.MessageTypeDefOf.RejectInput, false);
+                Messages.Message("Next realm has no tribulation, or one is already active.", RimWorld.MessageTypeDefOf.RejectInput, false);
         }
 
         [DebugAction("WenDao", "Fill true essence", actionType = DebugActionType.ToolMapForPawns,

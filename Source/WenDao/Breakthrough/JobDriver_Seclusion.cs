@@ -18,10 +18,27 @@ namespace WenDao
         private int elapsedTicks;
         private bool resolved;
         private bool started;
+        private List<Pawn> guards = new List<Pawn>();
 
         private Thing Cushion => job.GetTarget(TargetIndex.A).Thing;
 
         public float GuardedFraction => elapsedTicks > 0 ? (float)guardedTicks / elapsedTicks : 0f;
+
+        /// <summary>指派護法：離開吃飯睡覺後會自動回崗，直到閉關結束或被玩家改派。</summary>
+        public void AssignGuard(Pawn guard)
+        {
+            if (!guards.Contains(guard))
+                guards.Add(guard);
+        }
+
+        public void UnassignGuard(Pawn guard) => guards.Remove(guard);
+
+        /// <summary>不觸發反噬地結束閉關（已另行判定時用）。</summary>
+        public void EndWithoutBacklash()
+        {
+            resolved = true;
+            EndJobWith(JobCondition.Succeeded);
+        }
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -60,6 +77,8 @@ namespace WenDao
                 elapsedTicks += Interval;
                 if (GuardPresent())
                     guardedTicks += Interval;
+                else
+                    RecallGuard();
             };
             seclude.defaultCompleteMode = ToilCompleteMode.Delay;
             seclude.defaultDuration = duration;
@@ -89,6 +108,20 @@ namespace WenDao
             return false;
         }
 
+        private void RecallGuard()
+        {
+            guards.RemoveAll(g => g == null || g.Dead || g.Destroyed);
+            foreach (Pawn g in guards)
+            {
+                if (!g.Spawned || g.Map != pawn.Map || g.Downed || g.Drafted || g.InMentalState || !g.Awake()
+                    || g.CurJobDef == WD_DefOf.WD_GuardSeclusion || g.CurJob?.playerForced == true
+                    || !GuardNeeds.CanResume(g) || !g.CanReach(pawn, PathEndMode.Touch, Danger.Deadly))
+                    continue;
+                if (g.jobs.TryTakeOrderedJob(JobMaker.MakeJob(WD_DefOf.WD_GuardSeclusion, pawn), JobTag.Misc))
+                    return;
+            }
+        }
+
         public override void Notify_DamageTaken(DamageInfo dinfo)
         {
             base.Notify_DamageTaken(dinfo);
@@ -102,7 +135,9 @@ namespace WenDao
             if (c == null || !c.CanAttemptBreakthrough)
                 return base.GetReport();
             return base.GetReport() + " " + "WD_SeclusionReport".Translate(
-                BreakthroughUtility.SuccessChance(c, GuardedFraction).ToStringPercent());
+                BreakthroughUtility.SuccessChance(c, GuardedFraction).ToStringPercent(),
+                BreakthroughUtility.GuardBonus(c, GuardedFraction).ToStringPercent(),
+                GuardedFraction.ToStringPercent());
         }
 
         public override void ExposeData()
@@ -112,10 +147,25 @@ namespace WenDao
             Scribe_Values.Look(ref elapsedTicks, "elapsedTicks");
             Scribe_Values.Look(ref resolved, "resolved");
             Scribe_Values.Look(ref started, "started");
+            Scribe_Collections.Look(ref guards, "guards", LookMode.Reference);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit && guards == null)
+                guards = new List<Pawn>();
         }
     }
 
-    /// <summary>護法：守在閉關者身旁，直到閉關結束。</summary>
+    /// <summary>護法的離崗／回崗需求門檻。</summary>
+    public static class GuardNeeds
+    {
+        public static bool MustLeave(Pawn p) =>
+            Below(p.needs?.food, 0.2f) || Below(p.needs?.rest, 0.25f) || Below(p.needs?.joy, 0.1f);
+
+        public static bool CanResume(Pawn p) =>
+            !Below(p.needs?.food, 0.5f) && !Below(p.needs?.rest, 0.5f) && !Below(p.needs?.joy, 0.25f);
+
+        private static bool Below(Need n, float pct) => n != null && n.CurLevelPercentage < pct;
+    }
+
+    /// <summary>護法：守在閉關者身旁，直到閉關結束；餓了累了自行離崗，恢復後由閉關者的 driver 召回。</summary>
     public class JobDriver_GuardSeclusion : JobDriver
     {
         private Pawn Secluded => job.GetTarget(TargetIndex.A).Pawn;
@@ -126,12 +176,23 @@ namespace WenDao
         {
             this.FailOnDespawnedOrNull(TargetIndex.A);
             this.FailOn(() => Secluded.CurJobDef != WD_DefOf.WD_Seclusion);
+            AddFinishAction(condition =>
+            {
+                // 被玩家改派、徵召等強制打斷：視為解除護法。
+                if (condition == JobCondition.InterruptForced)
+                    (Secluded?.jobs?.curDriver as JobDriver_Seclusion)?.UnassignGuard(pawn);
+            });
 
             yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
 
             Toil guard = ToilMaker.MakeToil("WD_GuardSeclusion");
             guard.initAction = () => pawn.pather.StopDead();
-            guard.tickAction = () => pawn.rotationTracker.FaceTarget(Secluded);
+            guard.tickAction = () =>
+            {
+                pawn.rotationTracker.FaceTarget(Secluded);
+                if (pawn.IsHashIntervalTick(250) && GuardNeeds.MustLeave(pawn))
+                    EndJobWith(JobCondition.Succeeded);
+            };
             guard.defaultCompleteMode = ToilCompleteMode.Never;
             guard.handlingFacing = true;
             yield return guard;

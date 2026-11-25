@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <WD_InSeclusion.label>閉關</WD_InSeclusion.label>
-  <WD_InSeclusion.description>閉關衝擊下一境界。飢餓與疲勞幾乎停滯；任何打斷都會引發劇烈反噬。</WD_InSeclusion.description>
+  <WD_InSeclusion.description>閉關衝擊下一境界。飢餓、疲勞與娛樂需求幾乎停滯；任何打斷都會引發劇烈反噬。</WD_InSeclusion.description>
 
   <WD_QiBacklash.label>反噬內傷</WD_QiBacklash.label>
   <WD_QiBacklash.description>突破失敗後靈力倒灌所致的內傷，數日內會逐漸痊癒。</WD_QiBacklash.description>

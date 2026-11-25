@@ -44,7 +44,7 @@ docs/DESIGN.md
 - Harmony：Workshop 2009463077（已訂閱）。
 - 日誌：`%USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Player.log`（上一次為 `Player-prev.log`）。
 - .NET SDK 11 已安裝；目標框架仍為 `net472`（靠 Krafs 參考組件，不需要 .NET Framework targeting pack）。
-- 反編譯查原版寫法：ILSpy／`ilspycmd` 對 `RimWorldWin64_Data\Managed\Assembly-CSharp.dll`。
+- 反編譯查原版寫法：本機未裝 ilspycmd；可在 pwsh 用 `Add-Type` 載入 VS Code C# 擴充的 `.roslyn/ICSharpCode.Decompiler.dll`，以 `CSharpDecompiler` 讀 `RimWorldWin64_DataManagedAssembly-CSharp.dll`。
 
 ## 工作流程
 
@@ -64,7 +64,7 @@ docs/DESIGN.md
 - [ ] Phase 1 MVP
   - [x] 靈根：品階/屬性 Def、生成時擲骰、舊存檔補發、測靈盤與測靈工作、除錯指令（遊戲內驗證通過 2026-11-24）
   - [x] 靈氣格網與 overlay、蒲團與「修煉」工作、修為／境界（練氣→金丹，小階自動推進、瓶頸）、真元 Need、修煉速度 stat（遊戲內驗證通過 2026-11-24）
-  - [ ] 突破與天劫、壽元折損：瓶頸累積感悟、蒲團閉關（可強行）、護法、成功率判定、反噬代價、金丹天劫、壽元與坐化——已建置、載入無誤，待遊戲內驗證
+  - [ ] 突破與天劫、壽元折損：瓶頸累積感悟、蒲團閉關（可強行）、護法、成功率判定、反噬代價、金丹天劫、壽元與坐化——首輪測試後修正護法顯示與輪班、閉關需求、天劫雷傷與硬撐、壽元警告（2026-11-25），待遊戲內複驗
   - [ ] 原版老化疾病延後至壽元將盡（設計提到，未做）；避雷陣（未做）
   - [ ] 約 6 個法術（消耗真元）
   - [ ] 丹爐與 5 種丹、聚靈陣

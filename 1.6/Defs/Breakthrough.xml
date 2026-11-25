@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <!-- 閉關中：飢餓與疲勞大幅放緩，讓長時間閉關不至於餓死 -->
+  <!-- 閉關中：飢餓、疲勞、娛樂需求幾乎停滯（不用 disablesNeeds，以免結束後需求被重設為高值） -->
   <HediffDef>
     <defName>WD_InSeclusion</defName>
     <label>in seclusion</label>
-    <description>Sealed in meditation to break through to the next realm. Hunger and fatigue slow to a crawl. Any interruption causes a violent backlash.</description>
+    <description>Sealed in meditation to break through to the next realm. Hunger, fatigue and the need for recreation all but stop. Any interruption causes a violent backlash.</description>
     <defaultLabelColor>(0.6, 0.8, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
     <everCurableByItem>false</everCurableByItem>
     <scenarioCanAdd>false</scenarioCanAdd>
     <stages>
       <li>
-        <hungerRateFactor>0.15</hungerRateFactor>
-        <restFallFactor>0.15</restFallFactor>
+        <hungerRateFactor>0.01</hungerRateFactor>
+        <restFallFactor>0.01</restFallFactor>
+        <statFactors>
+          <JoyFallRateFactor>0.01</JoyFallRateFactor>
+        </statFactors>
       </li>
     </stages>
   </HediffDef>
@@ -151,6 +154,36 @@
     <reportString>guarding TargetA in seclusion.</reportString>
     <casualInterruptible>true</casualInterruptible>
   </JobDef>
+
+  <JobDef>
+    <defName>WD_EndureTribulation</defName>
+    <driverClass>WenDao.JobDriver_EndureTribulation</driverClass>
+    <reportString>enduring heaven's tribulation.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <suspendable>false</suspendable>
+    <checkOverrideOnDamage>Never</checkOverrideOnDamage>
+  </JobDef>
+
+  <!-- 天雷：無 armorCategory 即無視護甲；不引火、不毀建築 -->
+  <DamageDef>
+    <defName>WD_TribulationLightning</defName>
+    <label>tribulation lightning</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>false</canInterruptJobs>
+    <deathMessage>{0} has been struck down by heaven's tribulation.</deathMessage>
+    <hediff>ElectricalBurn</hediff>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>6</defaultDamage>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+    <buildingDamageFactor>0</buildingDamageFactor>
+    <explosionCellFleck>BlastEMP</explosionCellFleck>
+    <explosionColorCenter>(0.8, 0.8, 1)</explosionColorCenter>
+    <explosionColorEdge>(0.6, 0.7, 1)</explosionColorEdge>
+    <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+  </DamageDef>
 
   <GameConditionDef>
     <defName>WD_HeavenlyTribulation</defName>

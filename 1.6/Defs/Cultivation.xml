@@ -34,12 +34,13 @@
     <guardRadius>3.9</guardRadius>
     <breakthroughChanceRange>0.02~0.95</breakthroughChanceRange>
 
-    <!-- 天劫：預警後開始，每隔一段時間一道雷；落雷點在突破者旁 2~3 格（波及旁人），另直接灼傷突破者。 -->
+    <!-- 天劫：預警後開始，每隔一段時間一道雷；雷直接劈中突破者（無視護甲、不引火），並波及 tribulationSplashRadius 內的其他人。 -->
     <tribulationWarningTicks>2500</tribulationWarningTicks>
     <tribulationIntervalTicks>600</tribulationIntervalTicks>
+    <tribulationSplashRadius>2.9</tribulationSplashRadius>
 
-    <!-- 壽元：剩餘少於此年數時發警告信 -->
-    <lifespanWarningYears>5</lifespanWarningYears>
+    <!-- 壽元：剩餘少於此年數時發警告信（應大於單次突破失敗的最大折壽，否則可能來不及警告） -->
+    <lifespanWarningYears>15</lifespanWarningYears>
   </WenDao.WenDaoTuningDef>
 
   <!-- ===== 境界 =====

@@ -30,8 +30,9 @@ namespace WenDao
 
         public int tribulationWarningTicks = 2500;
         public int tribulationIntervalTicks = 600;
+        public float tribulationSplashRadius = 2.9f;
 
-        public float lifespanWarningYears = 5f;
+        public float lifespanWarningYears = 15f;
 
         public static WenDaoTuningDef Get => WD_DefOf.WD_Tuning;
     }

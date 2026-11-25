@@ -1,12 +1,14 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace WenDao
 {
     /// <summary>
     /// 天劫：預警一段時間後，每隔 tribulationIntervalTicks 一道雷。
-    /// 落雷在突破者旁 2~3 格（原版雷擊爆炸，會波及旁人、引火），並直接灼傷突破者。
-    /// 劈完仍活著即進境；離開地圖算失敗。
+    /// 雷直接劈在突破者身上（無視護甲、不引火），並以同一種雷傷波及周圍的人。
+    /// 突破者會原地打坐硬撐；劈完仍活著即進境，離開地圖算失敗。
     /// </summary>
     public class GameCondition_HeavenlyTribulation : GameCondition
     {
@@ -50,6 +52,8 @@ namespace WenDao
                 Finish();
                 return;
             }
+            if (target.IsHashIntervalTick(30))
+                KeepEnduring();
             if (Find.TickManager.TicksGame < nextStrikeTick)
                 return;
 
@@ -68,17 +72,26 @@ namespace WenDao
             }
         }
 
+        /// <summary>讓突破者留在原地硬撐；徵召、倒地、著火、精神崩潰時不干預。</summary>
+        private void KeepEnduring()
+        {
+            if (target.Downed || target.Drafted || target.InMentalState || target.IsBurning()
+                || target.jobs == null || target.CurJobDef == WD_DefOf.WD_EndureTribulation)
+                return;
+            Job job = JobMaker.MakeJob(WD_DefOf.WD_EndureTribulation);
+            job.playerForced = true; // 不因敵人靠近等反應自行逃離
+            target.jobs.StartJob(job, JobCondition.InterruptForced);
+        }
+
         private void Strike()
         {
             Map map = SingleMap;
             IntVec3 center = target.Position;
-            if (!CellFinder.TryFindRandomCellNear(center, map, 3,
-                    c => c.InBounds(map) && !c.InHorDistOf(center, 1.9f), out IntVec3 boltCell))
-                boltCell = center;
-            map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(map, boltCell));
-
-            float dmg = targetRealm.tribulationDamage.RandomInRange;
-            target.TakeDamage(new DamageInfo(DamageDefOf.Burn, dmg));
+            map.weatherManager.eventHandler.AddEvent(new WeatherEvent_TribulationBolt(map, center));
+            GenExplosion.DoExplosion(center, map, WenDaoTuningDef.Get.tribulationSplashRadius, WD_DefOf.WD_TribulationLightning, null,
+                damAmount: GenMath.RoundRandom(targetRealm.tribulationDamage.RandomInRange),
+                ignoredThings: new List<Thing> { target }, doSoundEffects: false);
+            target.TakeDamage(new DamageInfo(WD_DefOf.WD_TribulationLightning, targetRealm.tribulationDamage.RandomInRange));
         }
 
         private void Finish()
